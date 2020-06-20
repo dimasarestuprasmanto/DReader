@@ -4,8 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center"
-    android:background="#87CEFA">
-    <ImageView android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:src="@drawable/logo_dreader" />
+    android:background="@color/bg_color_splas_screen">
+    <ImageView android:layout_width="@dimen/dimen172"
+        android:layout_height="@dimen/dimen172"
+        android:src="@drawable/logo_apk" />
 </LinearLayout>

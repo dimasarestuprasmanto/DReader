@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DReader</string>
+    <string name="Next">NEXT</string>
+    <string name="Back">BACK</string>
 </resources>
