@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "817756632331",
+    "firebase_url": "https://dreader-24af9.firebaseio.com",
+    "project_id": "dreader-24af9",
+    "storage_bucket": "dreader-24af9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817756632331:android:ec99bc016cc6abd2f85e0e",
+        "android_client_info": {
+          "package_name": "com.dimasarp.dreader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817756632331-p5esjehut81geu2s6tg9p9t9pf1vfegv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dimasarp.dreader",
+            "certificate_hash": "6ea1c961a140274e703b7343f665247815295f0d"
+          }
+        },
+        {
+          "client_id": "817756632331-ggak250akdcaokljftoctkshvqo1jo5s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwXQx3vewbbObs4hfKFtD-3dUQJpTIQ-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817756632331-ggak250akdcaokljftoctkshvqo1jo5s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

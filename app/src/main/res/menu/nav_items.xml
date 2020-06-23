@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:cnb_unselectedColor="#fff">
+    <item
+        android:id="@+id/recently"
+        android:icon="@drawable/ic_recently"
+        android:title="@string/nav_recently"
+        app:cnb_iconColor="#fff"
+        app:cnb_textColor="#fff"
+        app:cnb_backgroundColor="#ff785b"/>
+    <item
+        android:id="@+id/book"
+        android:icon="@drawable/ic_book"
+        android:title="@string/nav_book"
+        app:cnb_iconColor="#fff"
+        app:cnb_textColor="#fff"
+        app:cnb_backgroundColor="#ff785b"/>
+    <item
+        android:id="@+id/chat"
+        android:icon="@drawable/ic_chat"
+        android:title="@string/nav_chat"
+        app:cnb_iconColor="#fff"
+        app:cnb_textColor="#fff"
+        app:cnb_backgroundColor="#ff785b"/>
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_setting"
+        android:title="@string/nav_setting"
+        app:cnb_iconColor="#fff"
+        app:cnb_textColor="#fff"
+        app:cnb_backgroundColor="#ff785b"/>
+</menu>

@@ -3,6 +3,7 @@ package com.dimasarp.dreader;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
              @Override
              public void onClick(View view){
 
-                 mSlideViewPager.setCurrentItem(mCurrentPage + 1);
+                 move();
              }
          });
 
@@ -76,6 +77,16 @@ public class MainActivity extends AppCompatActivity {
         }
         if(mDots.length > 0){
             mDots[position].setTextColor(getResources().getColor(R.color.colorWhite));
+        }
+    }
+
+    private void move(){
+        if(mCurrentPage == mDots.length - 1){
+            Intent pindah = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(pindah);
+            finish();
+        }else{
+            mSlideViewPager.setCurrentItem(mCurrentPage + 1);
         }
     }
 

@@ -2,4 +2,12 @@
     <string name="app_name">DReader</string>
     <string name="Next">NEXT</string>
     <string name="Back">BACK</string>
+    <string name="nav">recently</string>
+    <string name="nav_recently">Recently</string>
+    <string name="nav_book">Book</string>
+    <string name="nav_chat">Chat</string>
+    <string name="nav_setting">Setting</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
