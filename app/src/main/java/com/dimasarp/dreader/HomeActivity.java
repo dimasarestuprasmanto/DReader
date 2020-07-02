@@ -29,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
                     .replace(R.id.fragment_container, bookFragment)
                     .commit();
         }
+
         botomNav.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
             public void onItemSelected(int i) {

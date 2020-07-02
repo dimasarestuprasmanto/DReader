@@ -8,10 +8,4 @@
     android:padding="@dimen/dimen16"
     tools:context=".ChatFragment">
 
-
-    <Button
-        android:id="@+id/btnmanga"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
 </RelativeLayout>
