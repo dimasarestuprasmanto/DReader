@@ -41,6 +41,12 @@ dependencies {
     // For control over item selection of both touch and mouse driven selection
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
     implementation "androidx.cardview:cardview:1.0.0"
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.github.chrisbanes:PhotoView:2.1.4'
+    implementation 'com.github.d-max:spots-dialog:1.1@aar'
+    implementation 'com.ss.bannerslider:bannerslider:2.0.0'
+    implementation 'com.wajahatkarim3.easyflipviewpager:easyflipviewpager:2.0.0'
 }
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'

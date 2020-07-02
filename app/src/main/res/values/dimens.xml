@@ -3,6 +3,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="widthScreen">720px</dimen>
 
+    <dimen name="dimen0">0dp</dimen>
     <dimen name="dimen1">1dp</dimen>
     <dimen name="dimen2">2dp</dimen>
     <dimen name="dimen3">3dp</dimen>
@@ -51,6 +52,7 @@
     <dimen name="dimen62">62dp</dimen>
     <dimen name="dimen64">64dp</dimen>
     <dimen name="dimen72">72dp</dimen>
+    <dimen name="dimen75">75dp</dimen>
     <dimen name="dimen76">76dp</dimen>
     <dimen name="dimen80">80dp</dimen>
     <dimen name="dimen84">84dp</dimen>

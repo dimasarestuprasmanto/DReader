@@ -2,28 +2,57 @@ package com.dimasarp.dreader;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.dimasarp.dreader.adapter.MahasiswaAdapter;
-import com.dimasarp.dreader.model.Mahasiswa;
+import com.dimasarp.dreader.Adapter.MyComicAdapter;
+import com.dimasarp.dreader.Adapter.MySliderAdapter;
+import com.dimasarp.dreader.Common.Common;
+import com.dimasarp.dreader.Interface.IBannerLoadDone;
+import com.dimasarp.dreader.Interface.IComicLoadDone;
+import com.dimasarp.dreader.Model.Comic;
+import com.dimasarp.dreader.Service.PicassoLoadingService;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import dmax.dialog.SpotsDialog;
+import ss.com.bannerslider.Slider;
+
+import static com.dimasarp.dreader.Common.Common.comicList;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BookFragment extends Fragment {
+public class BookFragment extends Fragment implements IBannerLoadDone, IComicLoadDone {
+    Slider slider;
+    SwipeRefreshLayout swipeRefreshLayout;
+    RecyclerView recycler_comic;
+    TextView txt_comic;
+    //database
+    DatabaseReference banners,comics;
 
-    private RecyclerView recyclerView;
-    private MahasiswaAdapter adapter;
-    private ArrayList<Mahasiswa> mahasiswaArrayList;
+    //Listener
+    IBannerLoadDone bannerListener;
+    IComicLoadDone comicListener;
 
     public BookFragment() {
         // Required empty public constructor
@@ -36,20 +65,101 @@ public class BookFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_book, container, false);
 
-        addData();
+        //init database
+        banners = FirebaseDatabase.getInstance().getReference("Banners");
+        comics =  FirebaseDatabase.getInstance().getReference("Comic");
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        adapter = new MahasiswaAdapter(mahasiswaArrayList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        //init banner
+        bannerListener = this;
+        comicListener = this;
 
+
+        slider = (Slider) view.findViewById(R.id.slider);
+        Slider.init(new PicassoLoadingService());
+
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_to_refresh);
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary),
+                getResources().getColor(R.color.colorPrimaryDark));
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadBanner();
+                loadComic();
+            }
+        });
+
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                loadBanner();
+                loadComic();
+            }
+        });
+        recycler_comic = (RecyclerView) view.findViewById(R.id.recycler_comic);
+        recycler_comic.setHasFixedSize(true);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
+        recycler_comic.setLayoutManager(mLayoutManager);
+
+        txt_comic = (TextView) view.findViewById(R.id.txt_comic);
         return view;
     }
 
-    void addData(){
-        mahasiswaArrayList = new ArrayList<>();
-        mahasiswaArrayList.add(new Mahasiswa("Dimas Maulana"));
-        mahasiswaArrayList.add(new Mahasiswa("Fadly Yonk"));
+    private void loadComic() {
+
+        comics.addListenerForSingleValueEvent(new ValueEventListener() {
+            List<Comic> comic_load = new ArrayList<>();
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot comicSnapshot:dataSnapshot.getChildren()){
+                    Comic comic = comicSnapshot.getValue(Comic.class);
+                    comic_load.add(comic);
+                }
+                comicListener.onComicLoadDoneListener(comic_load);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(),""+databaseError.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void loadBanner() {
+        banners.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<String> bannerList = new ArrayList<>();
+                for (DataSnapshot bannerSnapShot:dataSnapshot.getChildren())
+                {
+                    String image = bannerSnapShot.getValue(String.class);
+                    bannerList.add(image);
+                }
+                //memanggil list
+                bannerListener.onBannerLoadDoneListener(bannerList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(),""+databaseError.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void onBannerLoadDoneListener(List<String> banners) {
+        slider.setAdapter(new MySliderAdapter(banners));
+    }
+
+    @Override
+    public void onComicLoadDoneListener(List<Comic> comicList) {
+        Common.comicList = comicList;
+
+        recycler_comic.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comicList));
+
+        txt_comic.setText(new StringBuilder("NEW COMIC(")
+        .append(comicList.size())
+        .append(")"));
+
     }
 }
