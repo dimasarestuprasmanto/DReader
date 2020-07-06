@@ -42,7 +42,7 @@ public class MyComicAdapter extends RecyclerView.Adapter<MyComicAdapter.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Picasso.get().load(comicList.get(position).Image).into(holder.comic_image);
-        holder.comic_name.setText(comicList.get(position).Name);
+        holder.comic_name.setText(Common.formatString(comicList.get(position).Name));
 
         //event
         holder.setRecyclerItemClickListener(new IRecyclerItemClickListener() {

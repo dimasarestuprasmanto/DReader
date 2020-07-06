@@ -1,5 +1,6 @@
 package com.dimasarp.dreader;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +33,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.roger.catloadinglibrary.CatLoadingView;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +53,10 @@ public class BookFragment extends Fragment implements IBannerLoadDone, IComicLoa
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recycler_comic;
     TextView txt_comic;
+    EditText search;
+    ImageView btn_search;
+    CatLoadingView catLoadingView;
+
     //database
     DatabaseReference banners,comics;
 
@@ -64,6 +74,7 @@ public class BookFragment extends Fragment implements IBannerLoadDone, IComicLoa
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_book, container, false);
+
 
         //init database
         banners = FirebaseDatabase.getInstance().getReference("Banners");
@@ -102,10 +113,32 @@ public class BookFragment extends Fragment implements IBannerLoadDone, IComicLoa
         recycler_comic.setLayoutManager(mLayoutManager);
 
         txt_comic = (TextView) view.findViewById(R.id.txt_comic);
+        search = (EditText) view.findViewById(R.id.search);
+        search.setVisibility(View.INVISIBLE);
+
+        btn_search = (ImageView) view.findViewById(R.id.btn_search);
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (search.getVisibility() == View.VISIBLE){
+                    fetchSearchComic(search.getText().toString().toLowerCase());
+                }else {
+                    search.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         return view;
+
+
     }
 
+
+
     private void loadComic() {
+        catLoadingView = new CatLoadingView();
+        if (!swipeRefreshLayout.isRefreshing())
+            catLoadingView.show(getFragmentManager(), "");
 
         comics.addListenerForSingleValueEvent(new ValueEventListener() {
             List<Comic> comic_load = new ArrayList<>();
@@ -161,5 +194,20 @@ public class BookFragment extends Fragment implements IBannerLoadDone, IComicLoa
         .append(comicList.size())
         .append(")"));
 
+        if (!swipeRefreshLayout.isRefreshing())
+            catLoadingView.dismiss();
+
     }
+
+    private void fetchSearchComic(String query) {
+
+        List<Comic> comic_search = new ArrayList<>();
+        for (Comic comic:Common.comicList){
+            if (comic.Name.toLowerCase().contains(query))
+                comic_search.add(comic);
+        }
+
+        recycler_comic.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comic_search));
+    }
+
 }

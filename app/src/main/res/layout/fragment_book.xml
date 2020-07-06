@@ -2,6 +2,7 @@
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipe_to_refresh"
     android:layout_height="match_parent"
     tools:context=".BookFragment">
@@ -16,20 +17,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:padding="@dimen/dimen3"
             android:weightSum="9"
-            android:padding="@dimen/dimen16"
             android:background="@color/bg_color_splas_screen">
 
-            <ImageView
+            <EditText
+                android:id="@+id/search"
                 android:layout_width="@dimen/dimen0"
+                android:background="@drawable/custom_search"
+                android:padding="@dimen/dimen5"
+                android:textSize="@dimen/font24"
                 android:layout_height="wrap_content"
-                android:layout_weight="8"
-                android:src="@drawable/comicapp"/>
+                android:layout_weight="8"/>
 
             <ImageView
                 android:id="@+id/btn_search"
                 android:layout_width="@dimen/dimen0"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_search_white_24dp"/>
 
@@ -37,7 +41,9 @@
 
         <ss.com.bannerslider.Slider
             android:id="@+id/slider"
+            android:layout_marginTop="@dimen/dimen3"
             android:layout_width="match_parent"
+            android:minHeight="@dimen/dimen150"
             android:layout_height="wrap_content"></ss.com.bannerslider.Slider>
             
             <LinearLayout

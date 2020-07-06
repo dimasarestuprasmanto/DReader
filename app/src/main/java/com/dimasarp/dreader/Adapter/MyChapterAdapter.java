@@ -1,6 +1,7 @@
 package com.dimasarp.dreader.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dimasarp.dreader.Common.Common;
+import com.dimasarp.dreader.Interface.IRecyclerItemClickListener;
 import com.dimasarp.dreader.Model.Chapter;
 import com.dimasarp.dreader.R;
+import com.dimasarp.dreader.ViewComicActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -36,6 +40,15 @@ public class MyChapterAdapter extends RecyclerView.Adapter<MyChapterAdapter.MyVi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.txt_chapter_numb.setText(chapterList.get(position).Name);
+
+        holder.setRecyclerItemClickListener(new IRecyclerItemClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Common.chapterSelected = chapterList.get(position);
+                Common.chapterIndex = position;
+                context.startActivity(new Intent(context, ViewComicActivity.class));
+            }
+        });
     }
 
     @Override
@@ -43,11 +56,24 @@ public class MyChapterAdapter extends RecyclerView.Adapter<MyChapterAdapter.MyVi
         return chapterList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView txt_chapter_numb;
+        IRecyclerItemClickListener recyclerItemClickListener;
+
+        public void setRecyclerItemClickListener(IRecyclerItemClickListener recyclerItemClickListener) {
+            this.recyclerItemClickListener = recyclerItemClickListener;
+        }
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             txt_chapter_numb = (TextView)itemView.findViewById(R.id.txt_chapter_numb);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            recyclerItemClickListener.onClick(v,getAdapterPosition());
         }
     }
 }
