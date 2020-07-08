@@ -22,11 +22,11 @@ public class HomeActivity extends AppCompatActivity {
         botomNav = findViewById(R.id.bottom_nav);
 
         if(savedInstanceState==null){
-            botomNav.setItemSelected(R.id.book, true);
+            botomNav.setItemSelected(R.id.home, true);
             fragmentManager = getSupportFragmentManager();
-            BookFragment bookFragment = new BookFragment();
+            HomeFragment homeFragment = new HomeFragment();
             fragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, bookFragment)
+                    .replace(R.id.fragment_container, homeFragment)
                     .commit();
         }
 
@@ -35,11 +35,11 @@ public class HomeActivity extends AppCompatActivity {
             public void onItemSelected(int i) {
                 Fragment fragment = null;
                 switch (i){
-                    case R.id.recently:
-                        fragment = new RecentlyFragment();
+                    case R.id.home:
+                        fragment = new HomeFragment();
                         break;
-                    case R.id.book:
-                        fragment = new BookFragment();
+                    case R.id.manga:
+                        fragment = new MangaFragment();
                         break;
                     case R.id.chat:
                         fragment = new ChatFragment();

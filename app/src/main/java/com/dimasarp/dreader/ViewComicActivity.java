@@ -59,7 +59,7 @@ public class ViewComicActivity extends AppCompatActivity {
     private void fetchLinks(Chapter chapter) {
                     MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(getBaseContext(),chapter.Links);
                     recyclerView.setAdapter(adapter);
-                    txt_chapter_name.setText(Common.formatString(Common.chapterList.get(Common.chapterIndex).Name));
+                    txt_chapter_name.setText(String.valueOf("Chapter "+(Common.chapterList.get(Common.chapterIndex).Name)));
     }
 
     public void cek(){

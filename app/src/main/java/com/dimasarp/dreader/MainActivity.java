@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.dimasarp.dreader.Adapter.SlideAdapter;
+import com.dimasarp.dreader.SharedPreferences.PrefManager;
+
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager mSlideViewPager;
@@ -18,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayout mDotLayout;
     private TextView[] mDots;
-
+    private PrefManager prefManager;
 
     private Button mBtnNext;
     private Button mBtnPrev;
@@ -30,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        prefManager = new PrefManager(this);
+        if (!prefManager.isFirstTimeLaunch()) {
+            launchHomeScreen();
+            finish();
+        }
 
         mSlideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
         mDotLayout = (LinearLayout) findViewById(R.id.dotslayout);
@@ -62,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void launchHomeScreen() {
+        PrefManager prefManager = new PrefManager(getApplicationContext());
+        prefManager.setFirstTimeLaunch(false);
+        Intent pindah = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(pindah);
+        finish();
+    }
+
     //Membuat dot pada walk through
     public void addDotsIndicator(int position){
 
@@ -83,9 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void move(){
         if(mCurrentPage == mDots.length - 1){
-            Intent pindah = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(pindah);
-            finish();
+            launchHomeScreen();
         }else{
             mSlideViewPager.setCurrentItem(mCurrentPage + 1);
         }

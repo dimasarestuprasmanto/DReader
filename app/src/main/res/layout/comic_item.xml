@@ -20,7 +20,8 @@
                 android:id="@+id/image_comic"
                 android:scaleType="fitXY"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:transitionName="imagemanga"/>
 
             <TextView
                 android:id="@+id/comic_name"
@@ -28,6 +29,7 @@
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"
                 android:padding="@dimen/dimen8"
+                android:fontFamily="@font/font_utama"
                 android:text="COMIC"
                 android:layout_gravity="bottom"
                 android:layout_width="match_parent"

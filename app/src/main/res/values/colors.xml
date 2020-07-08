@@ -7,6 +7,7 @@
     <color name="colorWhite">#ffffff</color>
     <color name="bg_color_splas_screen">#4169E1</color>
     <color name="ColorBlack">#000000</color>
-    <color name="white_nav">#80ffffff</color>
+    <color name="white_nav">#FFF</color>
     <color name="rounded">#141932</color>
+    <color name="blue">#5B37B7</color>
 </resources>

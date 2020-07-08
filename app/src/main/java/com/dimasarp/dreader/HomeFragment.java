@@ -1,21 +1,24 @@
 package com.dimasarp.dreader;
 
-import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,24 +42,21 @@ import com.roger.catloadinglibrary.CatLoadingView;
 import java.util.ArrayList;
 import java.util.List;
 
-import dmax.dialog.SpotsDialog;
 import ss.com.bannerslider.Slider;
-
-import static com.dimasarp.dreader.Common.Common.comicList;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BookFragment extends Fragment implements IBannerLoadDone, IComicLoadDone {
+public class HomeFragment extends Fragment implements IBannerLoadDone, IComicLoadDone {
     Slider slider;
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recycler_comic;
-    TextView txt_comic;
+    TextView txt_comic,logo_name;
     EditText search;
-    ImageView btn_search;
-    CatLoadingView catLoadingView;
-
+    ImageView btn_search,logo,hide;
+    TextWatcher text = null;
+    boolean koneksi;
     //database
     DatabaseReference banners,comics;
 
@@ -64,7 +64,10 @@ public class BookFragment extends Fragment implements IBannerLoadDone, IComicLoa
     IBannerLoadDone bannerListener;
     IComicLoadDone comicListener;
 
-    public BookFragment() {
+    CatLoadingView mView;
+
+
+    public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -73,7 +76,7 @@ public class BookFragment extends Fragment implements IBannerLoadDone, IComicLoa
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_book, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
 
         //init database
@@ -84,6 +87,7 @@ public class BookFragment extends Fragment implements IBannerLoadDone, IComicLoa
         bannerListener = this;
         comicListener = this;
 
+        koneksi = false;
 
         slider = (Slider) view.findViewById(R.id.slider);
         Slider.init(new PicassoLoadingService());
@@ -91,22 +95,32 @@ public class BookFragment extends Fragment implements IBannerLoadDone, IComicLoa
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_to_refresh);
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary),
                 getResources().getColor(R.color.colorPrimaryDark));
+        Connected();
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                loadBanner();
-                loadComic();
-            }
-        });
+        if (koneksi = true) {
+            mView = new CatLoadingView();
+            mView.setCancelable(false);
+            if (!swipeRefreshLayout.isRefreshing());
+            mView.show(getFragmentManager(), "");
+            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    loadBanner();
+                    loadComic();
+                }
+            });
 
-        swipeRefreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                loadBanner();
-                loadComic();
-            }
-        });
+            swipeRefreshLayout.post(new Runnable() {
+                @Override
+                public void run() {
+                    loadBanner();
+                    loadComic();
+                }
+            });
+        }else {
+        }
+
+
         recycler_comic = (RecyclerView) view.findViewById(R.id.recycler_comic);
         recycler_comic.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
@@ -117,28 +131,85 @@ public class BookFragment extends Fragment implements IBannerLoadDone, IComicLoa
         search.setVisibility(View.INVISIBLE);
 
         btn_search = (ImageView) view.findViewById(R.id.btn_search);
+        logo = (ImageView) view.findViewById(R.id.icon);
+        logo_name = (TextView) view.findViewById(R.id.logo_name);
+
+        hide = (ImageView) view.findViewById(R.id.hide);
+
+        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (search.getVisibility() == View.VISIBLE){
-                    fetchSearchComic(search.getText().toString().toLowerCase());
-                }else {
                     search.setVisibility(View.VISIBLE);
-                }
+                    hide.setVisibility(View.VISIBLE);
+                    logo.setVisibility(View.INVISIBLE);
+                    logo_name.setVisibility(View.INVISIBLE);
+                    search.requestFocus();
+                    imm.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT);
             }
         });
+
+        search.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                fetchSearchComic(search.getText().toString().toLowerCase());
+                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                return false;
+            }
+        });
+
+        text = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                fetchSearchComic(search.getText().toString().toLowerCase());
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        };
+
+        search.addTextChangedListener(text);
+
+        hide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logo_name.setVisibility(View.VISIBLE);
+                logo.setVisibility(View.VISIBLE);
+                search.setVisibility(View.INVISIBLE);
+                hide.setVisibility(View.INVISIBLE);
+                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                search.setText("");
+                fetchSearchComic(search.getText().toString().toLowerCase());
+
+            }
+        });
+
 
         return view;
 
 
     }
 
-
+    public boolean Connected(){
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            koneksi = true;
+        }else {
+            koneksi = false;
+        }
+        return true;
+    }
 
     private void loadComic() {
-        catLoadingView = new CatLoadingView();
-        if (!swipeRefreshLayout.isRefreshing())
-            catLoadingView.show(getFragmentManager(), "");
 
         comics.addListenerForSingleValueEvent(new ValueEventListener() {
             List<Comic> comic_load = new ArrayList<>();
@@ -169,6 +240,7 @@ public class BookFragment extends Fragment implements IBannerLoadDone, IComicLoa
                     bannerList.add(image);
                 }
                 //memanggil list
+                slider.setInterval(3000);
                 bannerListener.onBannerLoadDoneListener(bannerList);
             }
 
@@ -194,9 +266,9 @@ public class BookFragment extends Fragment implements IBannerLoadDone, IComicLoa
         .append(comicList.size())
         .append(")"));
 
-        if (!swipeRefreshLayout.isRefreshing())
-            catLoadingView.dismiss();
 
+        if (!swipeRefreshLayout.isRefreshing())
+            mView.dismiss();
     }
 
     private void fetchSearchComic(String query) {

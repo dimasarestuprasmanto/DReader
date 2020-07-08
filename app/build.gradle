@@ -49,6 +49,8 @@ dependencies {
     implementation 'com.wajahatkarim3.easyflipviewpager:easyflipviewpager:2.0.0'
 
     implementation 'com.roger.catloadinglibrary:catloadinglibrary:1.0.5'
+    implementation 'com.ms-square:expandableTextView:0.1.4'
+    implementation 'com.github.morochorochadarwin:horizontalscrollmenu:2.0.1'
 }
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'

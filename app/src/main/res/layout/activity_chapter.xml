@@ -9,24 +9,39 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen30"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/bg_color_splas_screen"></androidx.appcompat.widget.Toolbar>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:elevation="@dimen/dimen0"
+        android:elevation="@dimen/dimen0">
+        <View
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:id="@+id/chapter_back"
+            android:background="@drawable/ic_keyboard_arrow_left_blue_24dp"
+            android:layout_width="@dimen/dimen50"
+            android:layout_height="@dimen/dimen50"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
 
     <ImageView
         android:id="@+id/banner"
-        android:layout_below="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen150"
-        android:paddingVertical="@dimen/dimen12" />
+        android:alpha="0.5"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="fill_parent"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:layout_height="@dimen/dimen150" />
     <ImageView
         android:layout_marginLeft="@dimen/dimen16"
         android:id="@+id/image"
         android:layout_below="@+id/banner"
+        android:transitionName="imagemanga"
         android:layout_width="@dimen/dimen90"
         android:layout_alignParentStart="true"
         android:layout_height="@dimen/dimen128"
@@ -34,6 +49,7 @@
 
     <TextView
         android:id="@+id/judul"
+        android:fontFamily="@font/font_utama"
         android:layout_below="@id/banner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -77,9 +93,19 @@
         android:layout_toEndOf="@+id/image"
         android:text="Author"
         android:textSize="@dimen/font16" />
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="@dimen/dimen9"
+            android:layout_margin="@dimen/dimen12"
+            android:id="@+id/header"
+            android:layout_below="@id/total_chapter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
     <TextView
-        android:id="@+id/header"
-        android:layout_below="@id/total_chapter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen16"
@@ -88,22 +114,57 @@
         android:text="Sinopsis"
         android:textSize="@dimen/font16" />
 
-    <TextView
-        android:id="@+id/sinopsis"
-        android:layout_below="@id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/font16"
-        android:layout_marginHorizontal="@dimen/dimen16"
-        android:layout_alignParentStart="true"
-        android:text="Di dunia lain, ada orang yang unggul dalam pertarungan sihir, orang-orang memanggilnya [sage], demi mencari seni pertarungan yang kuat, dia meneliti setiap seni sihir dan pertarungan yang ada, tapi pada akhirnya dia menyadari kalo [tubuhku tak cocok untuk seni sihit], namun dia tak menyerah, dia menyegel jiwanya dan terlahir di masa depan. ketika ingatannya kembali dia menyadari kalo dimasa depan, lvl sihir didunianya saat ini sangat rendah."
-        android:textSize="@dimen/font16" />
+                <com.ms.square.android.expandabletextview.ExpandableTextView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/expand_text_view"
+                    android:layout_width="match_parent"
+                    app:maxCollapsedLines="2"
+                    app:animDuration="200"
+                    android:layout_height="wrap_content"
+                    expandableTextView:expandDrawable="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    expandableTextView:collapseDrawable="@drawable/ic_keyboard_arrow_up_black_24dp">
+                <TextView
+                    android:id="@+id/expandable_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/font16"
+                    android:layout_marginHorizontal="@dimen/dimen16"
+                    android:layout_alignParentStart="true"
+                    android:textSize="@dimen/font16" />
 
-    <androidx.recyclerview.widget.RecyclerView
+                    <ImageButton
+                        android:id="@+id/expand_collapse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:layout_marginRight="@dimen/dimen12"
+                        android:layout_gravity="bottom|right"/>
+
+                </com.ms.square.android.expandabletextview.ExpandableTextView>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_margin="@dimen/dimen12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header"
+            app:cardCornerRadius="@dimen/dimen9">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/dimen12">
+            <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_chapter"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen360"
-        android:layout_below="@id/sinopsis"
-        android:layout_marginHorizontal="@dimen/font16"/>
+        android:layout_height="wrap_content" />
+            </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
 </RelativeLayout>
+
 </ScrollView>
