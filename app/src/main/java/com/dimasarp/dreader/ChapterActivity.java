@@ -65,8 +65,6 @@ public class ChapterActivity extends AppCompatActivity {
         });
 
 
-
-
         fetchChapter(Common.comicSelected);
     }
 

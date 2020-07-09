@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="09a14759-36da-4ab6-b2a7-b63c1b66c426" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/Adapter/MySliderAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/Banner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/Interface/IBannerLoadDone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/Model/Chapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/Model/Comic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/Service/PicassoLoadingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comicapp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../drawable/horizontal_line.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../drawable/ic_search_white_24dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../layout/activity_banner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/BookFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/BookFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/ChatFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/ChatFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/MyViewHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/RecentlyFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/RecentlyFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/model/Mahasiswa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/com/dimasarp/dreader/model/Manga.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../layout/fragment_book.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../layout/fragment_book.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../layout/fragment_recently.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../layout/fragment_recently.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../build.gradle" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="ProjectId" id="1e7m568Jpj7kZnYW7aUPveAuWtr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$USER_HOME$/AndroidStudioProjects/DmsApss" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="09a14759-36da-4ab6-b2a7-b63c1b66c426" name="Default Changelist" comment="" />
+      <created>1593680818868</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593680818868</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
