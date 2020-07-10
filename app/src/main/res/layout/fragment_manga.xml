@@ -1,28 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#edf1f5"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MangaFragment">
-
    <LinearLayout
-       android:id="@+id/linier"
        android:layout_width="match_parent"
-       android:layout_height="wrap_content">
-       <ListView
-           android:id="@+id/listview"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"/>
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:background="@color/colorWhite">
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="?attr/actionBarSize"
+          android:orientation="horizontal"
+          android:background="@drawable/custom_navbar">
+         <ImageView
+             android:id="@+id/icon"
+             android:padding="@dimen/dimen8"
+             android:layout_width="?attr/actionBarSize"
+             android:layout_height="?attr/actionBarSize"
+             android:layout_alignParentTop="true"
+             android:layout_alignParentStart="true"
+             android:layout_marginLeft="@dimen/dimen8"
+             android:layout_marginRight="@dimen/dimen3"
+             android:src="@drawable/icon_dreader"/>
+
+         <TextView
+             android:id="@+id/logo_name"
+             android:layout_width="wrap_content"
+             android:layout_height="?attr/actionBarSize"
+             android:textSize="@dimen/font31"
+             android:fontFamily="@font/unicorn"
+             android:gravity="center"
+             android:text=""
+             android:layout_toEndOf="@+id/icon" />
+
+         <EditText
+             android:hint="@string/hint"
+             android:id="@+id/search"
+             android:layout_width="match_parent"
+             android:background="@drawable/custom_search"
+             android:padding="@dimen/dimen5"
+             android:textSize="@dimen/font24"
+             android:visibility="invisible"
+             android:layout_height="match_parent"
+             android:layout_toEndOf="@+id/hide"
+             android:inputType="text"
+             android:fontFamily="@font/font_title"
+             android:textColor="@color/blue"
+             android:imeOptions="actionSearch"
+             android:layout_margin="@dimen/dimen5"/>
+
+         <ImageView
+             android:id="@+id/hide"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="@dimen/dimen8"
+             android:layout_centerVertical="true"
+             android:layout_alignParentStart="true"
+             android:visibility="invisible"
+             android:background="@drawable/ic_hide_blue_24dp"/>
+
+         <ImageView
+             android:id="@+id/btn_search"
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_alignParentTop="true"
+             android:layout_alignParentEnd="true"
+             android:layout_marginRight="@dimen/dimen18"
+             android:src="@drawable/ic_search_blue_24dp"/>
+
+      </RelativeLayout>
+
+      <LinearLayout
+          android:orientation="horizontal"
+          android:weightSum="4"
+          android:layout_marginTop="@dimen/dimen8"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+         <TextView
+             android:id="@+id/txt_comic"
+             android:text=""
+             android:background="@drawable/horizontal_line"
+             android:textSize="@dimen/font24"
+             android:paddingLeft="8dp"
+             android:fontFamily="@font/font_utama"
+             android:textStyle="bold"
+             android:textColor="@color/colorWhite"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"/>
+      </LinearLayout>
+
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:layout_width="match_parent"
+    android:id="@+id/swipe_to_refresh_manga"
+    android:layout_height="match_parent">
+         <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/recycler_comic_list"
+             android:padding="@dimen/dimen8"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:nestedScrollingEnabled="false" />
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
    </LinearLayout>
 
 
-
-   <androidx.recyclerview.widget.RecyclerView
-       android:layout_below="@id/linier"
-       android:id="@+id/recycler_filter_search"
-       android:layout_width="match_parent"
-       android:visibility="invisible"
-       android:layout_height="match_parent"/>
-
-</RelativeLayout>
+</LinearLayout>

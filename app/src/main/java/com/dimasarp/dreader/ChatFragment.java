@@ -21,13 +21,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ChatFragment extends Fragment {
-
     public ChatFragment() {
         // Required empty public constructor
     }
@@ -39,6 +39,7 @@ public class ChatFragment extends Fragment {
 
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_chat, container, false);
+
 
         WebView chat = (WebView) view.findViewById(R.id.chat);
         chat.getSettings().setBuiltInZoomControls(true);

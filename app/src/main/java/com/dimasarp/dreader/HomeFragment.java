@@ -29,6 +29,7 @@ import com.dimasarp.dreader.Adapter.MySliderAdapter;
 import com.dimasarp.dreader.Common.Common;
 import com.dimasarp.dreader.Interface.IBannerLoadDone;
 import com.dimasarp.dreader.Interface.IComicLoadDone;
+import com.dimasarp.dreader.Model.Category;
 import com.dimasarp.dreader.Model.Comic;
 import com.dimasarp.dreader.Service.PicassoLoadingService;
 import com.google.firebase.database.DataSnapshot;
@@ -48,15 +49,15 @@ import ss.com.bannerslider.Slider;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements IBannerLoadDone, IComicLoadDone {
+public class HomeFragment extends Fragment implements IBannerLoadDone,IComicLoadDone {
     Slider slider;
     SwipeRefreshLayout swipeRefreshLayout;
-    RecyclerView recycler_comic;
+    RecyclerView recycler_comic,recycler_comic1,recycler_comic2;
     TextView txt_comic,logo_name;
     EditText search;
     ImageView btn_search,logo,hide;
     TextWatcher text = null;
-    boolean koneksi;
+    boolean koneksi,alreadyExecuted;;
     //database
     DatabaseReference banners,comics;
 
@@ -83,10 +84,11 @@ public class HomeFragment extends Fragment implements IBannerLoadDone, IComicLoa
         banners = FirebaseDatabase.getInstance().getReference("Banners");
         comics =  FirebaseDatabase.getInstance().getReference("Comic");
 
+
+
         //init banner
         bannerListener = this;
         comicListener = this;
-
         koneksi = false;
 
         slider = (Slider) view.findViewById(R.id.slider);
@@ -97,101 +99,43 @@ public class HomeFragment extends Fragment implements IBannerLoadDone, IComicLoa
                 getResources().getColor(R.color.colorPrimaryDark));
         Connected();
 
+        recycler_comic = (RecyclerView) view.findViewById(R.id.recycler_comic);
+        recycler_comic1 = (RecyclerView) view.findViewById(R.id.recycler_comic1);
+        recycler_comic2 = (RecyclerView) view.findViewById(R.id.recycler_comic2);
+        recycler_comic.setHasFixedSize(true);
+        recycler_comic1.setHasFixedSize(true);
+        recycler_comic2.setHasFixedSize(true);
+
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(),1, GridLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager mLayoutManager1 = new GridLayoutManager(getContext(),1, GridLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager mLayoutManager2 = new GridLayoutManager(getContext(),1, GridLayoutManager.HORIZONTAL, false);
+        recycler_comic.setLayoutManager(mLayoutManager);
+        recycler_comic1.setLayoutManager(mLayoutManager1);
+        recycler_comic2.setLayoutManager(mLayoutManager2);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadBanner();
+                loadComic();
+            }
+        });
+
         if (koneksi = true) {
             mView = new CatLoadingView();
             mView.setCancelable(false);
-            if (!swipeRefreshLayout.isRefreshing());
+            if (!swipeRefreshLayout.isRefreshing())
             mView.show(getFragmentManager(), "");
-            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    loadBanner();
-                    loadComic();
-                }
-            });
+                swipeRefreshLayout.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadBanner();
+                        loadComic();
+                    }
+                });
 
-            swipeRefreshLayout.post(new Runnable() {
-                @Override
-                public void run() {
-                    loadBanner();
-                    loadComic();
-                }
-            });
         }else {
         }
-
-
-        recycler_comic = (RecyclerView) view.findViewById(R.id.recycler_comic);
-        recycler_comic.setHasFixedSize(true);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
-        recycler_comic.setLayoutManager(mLayoutManager);
-
-        txt_comic = (TextView) view.findViewById(R.id.txt_comic);
-        search = (EditText) view.findViewById(R.id.search);
-        search.setVisibility(View.INVISIBLE);
-
-        btn_search = (ImageView) view.findViewById(R.id.btn_search);
-        logo = (ImageView) view.findViewById(R.id.icon);
-        logo_name = (TextView) view.findViewById(R.id.logo_name);
-
-        hide = (ImageView) view.findViewById(R.id.hide);
-
-        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-
-        btn_search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    search.setVisibility(View.VISIBLE);
-                    hide.setVisibility(View.VISIBLE);
-                    logo.setVisibility(View.INVISIBLE);
-                    logo_name.setVisibility(View.INVISIBLE);
-                    search.requestFocus();
-                    imm.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT);
-            }
-        });
-
-        search.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                fetchSearchComic(search.getText().toString().toLowerCase());
-                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-                return false;
-            }
-        });
-
-        text = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                fetchSearchComic(search.getText().toString().toLowerCase());
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        };
-
-        search.addTextChangedListener(text);
-
-        hide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logo_name.setVisibility(View.VISIBLE);
-                logo.setVisibility(View.VISIBLE);
-                search.setVisibility(View.INVISIBLE);
-                hide.setVisibility(View.INVISIBLE);
-                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-                search.setText("");
-                fetchSearchComic(search.getText().toString().toLowerCase());
-
-            }
-        });
-
 
         return view;
 
@@ -206,30 +150,12 @@ public class HomeFragment extends Fragment implements IBannerLoadDone, IComicLoa
         }else {
             koneksi = false;
         }
-        return true;
+        return false;
     }
 
-    private void loadComic() {
 
-        comics.addListenerForSingleValueEvent(new ValueEventListener() {
-            List<Comic> comic_load = new ArrayList<>();
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot comicSnapshot:dataSnapshot.getChildren()){
-                    Comic comic = comicSnapshot.getValue(Comic.class);
-                    comic_load.add(comic);
-                }
-                comicListener.onComicLoadDoneListener(comic_load);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getActivity(),""+databaseError.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void loadBanner() {
+   private void loadBanner() {
         banners.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -254,32 +180,64 @@ public class HomeFragment extends Fragment implements IBannerLoadDone, IComicLoa
     @Override
     public void onBannerLoadDoneListener(List<String> banners) {
         slider.setAdapter(new MySliderAdapter(banners));
+
+
+    }
+
+    private void loadComic() {
+
+        comics.addListenerForSingleValueEvent(new ValueEventListener() {
+            List<Comic> comic_load = new ArrayList<>();
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot comicSnapshot:dataSnapshot.getChildren()){
+                    Comic comic = comicSnapshot.getValue(Comic.class);
+                    comic_load.add(comic);
+                }
+                comicListener.onComicLoadDoneListener(comic_load);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(),""+databaseError.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     public void onComicLoadDoneListener(List<Comic> comicList) {
         Common.comicList = comicList;
 
-        recycler_comic.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comicList));
-
-        txt_comic.setText(new StringBuilder("NEW COMIC(")
-        .append(comicList.size())
-        .append(")"));
-
-
+        fetchComic();
+        fetchComiccategory();
         if (!swipeRefreshLayout.isRefreshing())
             mView.dismiss();
+        swipeRefreshLayout.setRefreshing(false);
     }
 
-    private void fetchSearchComic(String query) {
+    private void fetchComic(){
+        List<Comic> comictop = new ArrayList<>();
+        List<Comic> comicrek = new ArrayList<>();
 
-        List<Comic> comic_search = new ArrayList<>();
+
         for (Comic comic:Common.comicList){
-            if (comic.Name.toLowerCase().contains(query))
-                comic_search.add(comic);
-        }
+            if (comic.Badge.contains("T")){
+                comictop.add(comic);
+            }else if (comic.Badge.contains("R")){
+                comicrek.add(comic);
+            }
+            recycler_comic.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comictop));
+            recycler_comic1.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comicrek));
 
-        recycler_comic.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comic_search));
+        }
+    }
+    private void fetchComiccategory(){
+        List<Comic> comicfav = new ArrayList<>();
+        for (Comic comic:Common.comicList){
+            if (comic.Name.contains(""))
+                comicfav.add(comic);
+        }
+        recycler_comic2.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comicfav));
     }
 
 }

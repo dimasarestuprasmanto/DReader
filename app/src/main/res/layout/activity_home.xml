@@ -19,7 +19,7 @@
     android:id="@+id/bottom_nav"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dimen64"
-    android:elevation="@dimen/dimen12"
+    android:elevation="@dimen/dimen3"
     app:cnb_textAppearance="@style/navbar"
     android:layout_alignParentBottom="true"
     android:background="@drawable/custom_navbar"

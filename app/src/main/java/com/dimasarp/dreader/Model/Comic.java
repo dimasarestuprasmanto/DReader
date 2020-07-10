@@ -10,8 +10,8 @@ public class Comic {
     public String Category;
     public int Released;
     public int Status;
+    public String Badge;
     public List<Chapter> Chapters;
-
     public Comic() {
     }
 }

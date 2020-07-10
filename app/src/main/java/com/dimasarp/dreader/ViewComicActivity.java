@@ -5,9 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import com.dimasarp.dreader.Adapter.MyRecyclerViewAdapter;
 import com.dimasarp.dreader.Common.Common;
@@ -18,6 +20,7 @@ public class ViewComicActivity extends AppCompatActivity {
     TextView txt_chapter_name;
     View back,next;
     LinearLayoutManager layoutManager;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +28,11 @@ public class ViewComicActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyler_manga);
         recyclerView.setHasFixedSize(true);
+        recyclerView.setItemViewCacheSize(20);
+        recyclerView.setDrawingCacheEnabled(true);
+        recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         txt_chapter_name = (TextView)findViewById(R.id.txt_chapter_name);
         next = findViewById(R.id.chapter_next);
         back = findViewById(R.id.chapter_back);
@@ -33,7 +40,6 @@ public class ViewComicActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         cek();
-
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +58,7 @@ public class ViewComicActivity extends AppCompatActivity {
                     cek();
             }
         });
+
 
         fetchLinks(Common.chapterSelected);
     }

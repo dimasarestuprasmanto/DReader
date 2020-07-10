@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen200">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dimen8"
+        app:cardCornerRadius="@dimen/dimen4">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="7">
+            <RelativeLayout
+                android:layout_width="@dimen/dimen0"
+                android:layout_height="match_parent"
+                android:layout_weight="3">
+                <ImageView
+                    android:id="@+id/image_comic"
+                    android:scaleType="fitXY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:transitionName="imagemanga"/>
+                <TextView
+                    android:id="@+id/comic_name"
+                    android:textColor="@color/white_nav"
+                    android:textStyle="bold"
+                    android:layout_alignParentBottom="true"
+                    android:background="#CC00008b"
+                    android:padding="@dimen/dimen8"
+                    android:fontFamily="@font/font_utama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="@dimen/dimen0"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen12"
+                android:layout_marginVertical="@dimen/dimen6"
+                android:layout_weight="4">
+                <TextView
+                    android:id="@+id/genre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/released"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tot_chap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

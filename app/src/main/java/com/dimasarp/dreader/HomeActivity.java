@@ -24,6 +24,7 @@ public class HomeActivity extends AppCompatActivity {
         if(savedInstanceState==null){
             botomNav.setItemSelected(R.id.home, true);
             fragmentManager = getSupportFragmentManager();
+            MangaFragment mangaFragment = new MangaFragment();
             HomeFragment homeFragment = new HomeFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.fragment_container, homeFragment)
