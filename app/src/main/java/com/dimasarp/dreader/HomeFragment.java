@@ -186,7 +186,7 @@ public class HomeFragment extends Fragment implements IBannerLoadDone,IComicLoad
 
     private void loadComic() {
 
-        comics.addListenerForSingleValueEvent(new ValueEventListener() {
+        comics.orderByChild("Name").addListenerForSingleValueEvent(new ValueEventListener() {
             List<Comic> comic_load = new ArrayList<>();
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -1,46 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChapterActivity">
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/banner1"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="192dp"
         android:background="@android:color/transparent"
+
         app:elevation="@dimen/dimen0"
         android:elevation="@dimen/dimen0">
-        <View
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:id="@+id/chapter_back"
-            android:background="@drawable/ic_keyboard_arrow_left_blue_24dp"
-            android:layout_width="@dimen/dimen50"
-            android:layout_height="@dimen/dimen50"/>
+        <net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:maxLines="3"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="@color/white_nav">
+            <ImageView
+                android:id="@+id/banner"
+                android:alpha="0.5"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_width="fill_parent"
+                android:scaleType="fitXY"
+                app:layout_collapseMode="parallax"
+                android:layout_height="match_parent" />
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+            </androidx.appcompat.widget.Toolbar>
+        </net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
-
-
-    <ImageView
-        android:id="@+id/banner"
-        android:alpha="0.5"
+    <View
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_width="fill_parent"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:layout_height="@dimen/dimen150" />
+        android:id="@+id/chapter_back"
+        android:background="@drawable/ic_keyboard_arrow_left_blue_24dp"
+        android:layout_width="@dimen/dimen50"
+        android:layout_height="@dimen/dimen50"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+
     <ImageView
         android:layout_marginLeft="@dimen/dimen16"
         android:id="@+id/image"
-        android:layout_below="@+id/banner"
+        android:layout_alignParentTop="true"
         android:transitionName="imagemanga"
         android:layout_width="@dimen/dimen90"
         android:layout_alignParentStart="true"
@@ -50,7 +69,7 @@
     <TextView
         android:id="@+id/judul"
         android:fontFamily="@font/font_utama"
-        android:layout_below="@id/banner"
+        android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -110,9 +129,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen16"
         android:layout_marginLeft="@dimen/dimen16"
+        android:fontFamily="@font/font_utama"
+        android:textStyle="bold"
         android:layout_alignParentStart="true"
         android:text="Sinopsis"
-        android:textSize="@dimen/font16" />
+        android:textSize="@dimen/font20" />
 
                 <com.ms.square.android.expandabletextview.ExpandableTextView
                     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -167,4 +188,6 @@
 
 </RelativeLayout>
 
-</ScrollView>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

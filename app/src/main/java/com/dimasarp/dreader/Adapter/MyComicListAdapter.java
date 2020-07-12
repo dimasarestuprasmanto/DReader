@@ -41,7 +41,7 @@ public class MyComicListAdapter extends RecyclerView.Adapter<MyComicListAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Picasso.get().load(comicList.get(position).Image).into(holder.comic_image);
-        holder.comic_name.setText(Common.formatString(comicList.get(position).Name));
+        holder.comic_name.setText(comicList.get(position).Name);
         holder.genre.setText(new StringBuilder("Genres : ").append(comicList.get(position).Category)
                 .append(""));
         holder.released.setText(new StringBuilder("Released : ").append(comicList.get(position).Released)
@@ -90,6 +90,7 @@ public class MyComicListAdapter extends RecyclerView.Adapter<MyComicListAdapter.
             status = (TextView)itemView.findViewById(R.id.status);
             released = (TextView)itemView.findViewById(R.id.released);
             totchap = (TextView)itemView.findViewById(R.id.tot_chap);
+
 
             itemView.setOnClickListener(this);
         }

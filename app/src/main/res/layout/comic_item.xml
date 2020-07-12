@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingHorizontal="@dimen/dimen3"
     android:paddingVertical="@dimen/dimen3"
-    android:layout_width="@dimen/dimen200"
-    android:layout_height="@dimen/dimen200">
+    android:layout_width="@dimen/dimen150"
+    android:layout_height="@dimen/dimen180">
 
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="@dimen/dimen8"
@@ -29,6 +29,7 @@
                 android:textColor="@color/white_nav"
                 android:textStyle="bold"
                 android:layout_gravity="bottom"
+                android:textSize="@dimen/font12"
                 android:background="#CC00008b"
                 android:padding="@dimen/dimen8"
                 android:fontFamily="@font/font_utama"

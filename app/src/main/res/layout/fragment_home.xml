@@ -12,8 +12,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/colorWhite">
-
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -40,39 +38,6 @@
                 android:text="D'Reader"
                 android:layout_toEndOf="@+id/icon" />
 
-            <EditText
-                android:id="@+id/search"
-                android:layout_width="match_parent"
-                android:background="@drawable/custom_search"
-                android:padding="@dimen/dimen5"
-                android:textSize="@dimen/font24"
-                android:visibility="invisible"
-                android:layout_height="match_parent"
-                android:layout_toEndOf="@+id/hide"
-                android:inputType="text"
-                android:fontFamily="@font/font_title"
-                android:textColor="@color/blue"
-                android:imeOptions="actionSearch"
-                android:layout_margin="@dimen/dimen5"/>
-
-            <ImageView
-                android:id="@+id/hide"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen8"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="true"
-                android:visibility="invisible"
-                android:background="@drawable/ic_hide_blue_24dp"/>
-
-            <ImageView
-                android:id="@+id/btn_search"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="@dimen/dimen18"
-                android:src="@drawable/ic_search_blue_24dp"/>
 
         </RelativeLayout>
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

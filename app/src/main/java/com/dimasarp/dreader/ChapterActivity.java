@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -16,12 +17,14 @@ import android.widget.Toolbar;
 import com.dimasarp.dreader.Adapter.MyChapterAdapter;
 import com.dimasarp.dreader.Common.Common;
 import com.dimasarp.dreader.Model.Comic;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
 import java.io.File;
+import java.util.List;
 
 import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
@@ -31,6 +34,8 @@ public class ChapterActivity extends AppCompatActivity {
     TextView total_chapter, judul, category,status,released,expandable_text;
     LinearLayoutManager layoutManager;
     ExpandableTextView showSinopsis;
+    net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout collapsing_container;
+
     View back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +69,8 @@ public class ChapterActivity extends AppCompatActivity {
             }
         });
 
-
         fetchChapter(Common.comicSelected);
+
     }
 
     private void fetchChapter(Comic comicSelected) {

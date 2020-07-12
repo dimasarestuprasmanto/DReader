@@ -1,6 +1,7 @@
 package com.dimasarp.dreader;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -21,6 +22,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,12 +42,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.roger.catloadinglibrary.CatLoadingView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import ss.com.bannerslider.Slider;
 
+import static com.dimasarp.dreader.Common.Common.comicHashSet;
 import static com.dimasarp.dreader.Common.Common.comicList;
+import static com.dimasarp.dreader.Common.Common.comicSelected;
 
 
 /**
@@ -164,22 +170,52 @@ public class MangaFragment extends Fragment {
             }
         });
 
-        fetchSearchComic("");
+
+            fetchSearchComic("");
+
+
+
+
         return view;
 
+    }
+
+    private void fetchfilterComic(String query1) {
+        String[] tag = query1.split(" ");
+        List<Comic> comic_search = new ArrayList<>();
+        i=0;
+        for (Comic comic : Common.comicList) {
+                for (String text : tag) {
+                        if (comic.Category.toLowerCase().contains(text)) {
+                            i++;
+                            if (tag.length <= i){
+                                comic_search.add(comic);
+                                i=0;
+                            }
+
+                        }
+                        //category false
+                    }
+                i=0;
+                }
+        txt_comic.setText(new StringBuilder("MANGA (")
+                .append(i)
+                .append(")"));
+        recycler_comic.setAdapter(new MyComicListAdapter(getActivity().getBaseContext(),comic_search));
     }
 
     private void fetchSearchComic(String query) {
 
         List<Comic> comic_search = new ArrayList<>();
-        for (Comic comic: comicList){
-            if (comic.Name.toLowerCase().contains(query)){
-                comic_search.add(comic);
-            }else {
 
-            }
+        for (Comic comic:Common.comicList){
+            if (comic.Name.toLowerCase().contains(query))
+                comic_search.add(comic);
         }
+
+
         swipeRefreshLayout.setRefreshing(false);
+
 
         recycler_comic.setAdapter(new MyComicListAdapter(getActivity().getBaseContext(),comic_search));
         txt_comic.setText(new StringBuilder("MANGA (")

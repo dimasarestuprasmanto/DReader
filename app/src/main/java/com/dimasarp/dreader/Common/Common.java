@@ -4,10 +4,12 @@ import com.dimasarp.dreader.Model.Chapter;
 import com.dimasarp.dreader.Model.Comic;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Common {
     public static List<Comic> comicList = new ArrayList<>();
+    public static HashSet<Comic> comicHashSet = new HashSet<>();
     public static Comic comicSelected;
     public static List<Chapter> chapterList;
     public static Chapter chapterSelected;
@@ -45,7 +47,7 @@ public class Common {
             "School life"};
 
     public static String formatString(String name) {
-        StringBuilder finalResult = new StringBuilder(name.length() > 18?name.substring(0,18)+" . . .":name);
+        StringBuilder finalResult = new StringBuilder(name.length() > 14?name.substring(0,14)+" . . .":name);
         return finalResult.toString();
     }
 }

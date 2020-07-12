@@ -5,6 +5,7 @@
     android:background="#edf1f5"
     android:layout_height="match_parent"
     tools:context=".MangaFragment">
+
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
@@ -33,7 +34,7 @@
              android:textSize="@dimen/font31"
              android:fontFamily="@font/unicorn"
              android:gravity="center"
-             android:text=""
+             android:text="D'Reader"
              android:layout_toEndOf="@+id/icon" />
 
          <EditText
@@ -75,7 +76,6 @@
 
       <LinearLayout
           android:orientation="horizontal"
-          android:weightSum="4"
           android:layout_marginTop="@dimen/dimen8"
           android:layout_width="match_parent"
           android:layout_height="wrap_content">
@@ -89,8 +89,9 @@
              android:fontFamily="@font/font_utama"
              android:textStyle="bold"
              android:textColor="@color/colorWhite"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"/>
+             android:layout_width="0dp"
+             android:layout_weight="3"
+             android:layout_height="match_parent"/>
       </LinearLayout>
 
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
