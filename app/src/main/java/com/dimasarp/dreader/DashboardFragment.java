@@ -12,13 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
-import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,7 +26,6 @@ import com.dimasarp.dreader.Adapter.MySliderAdapter;
 import com.dimasarp.dreader.Common.Common;
 import com.dimasarp.dreader.Interface.IBannerLoadDone;
 import com.dimasarp.dreader.Interface.IComicLoadDone;
-import com.dimasarp.dreader.Model.Category;
 import com.dimasarp.dreader.Model.Comic;
 import com.dimasarp.dreader.Service.PicassoLoadingService;
 import com.google.firebase.database.DataSnapshot;
@@ -49,7 +45,7 @@ import ss.com.bannerslider.Slider;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements IBannerLoadDone,IComicLoadDone {
+public class DashboardFragment extends Fragment implements IBannerLoadDone,IComicLoadDone {
     Slider slider;
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recycler_comic,recycler_comic1,recycler_comic2;
@@ -68,7 +64,7 @@ public class HomeFragment extends Fragment implements IBannerLoadDone,IComicLoad
     CatLoadingView mView;
 
 
-    public HomeFragment() {
+    public DashboardFragment() {
         // Required empty public constructor
     }
 
@@ -77,7 +73,7 @@ public class HomeFragment extends Fragment implements IBannerLoadDone,IComicLoad
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
 
         //init database
@@ -226,8 +222,8 @@ public class HomeFragment extends Fragment implements IBannerLoadDone,IComicLoad
             }else if (comic.Badge.contains("R")){
                 comicrek.add(comic);
             }
-            recycler_comic.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comictop));
-            recycler_comic1.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comicrek));
+            recycler_comic.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comictop,getActivity()));
+            recycler_comic1.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comicrek,getActivity()));
 
         }
     }
@@ -237,7 +233,7 @@ public class HomeFragment extends Fragment implements IBannerLoadDone,IComicLoad
             if (comic.Name.contains(""))
                 comicfav.add(comic);
         }
-        recycler_comic2.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comicfav));
+        recycler_comic2.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comicfav,getActivity()));
     }
 
 }

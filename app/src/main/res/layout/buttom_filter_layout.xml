@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#edf1f5"
+    android:paddingBottom="@dimen/dimen20">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:padding="@dimen/dimen8"
+        android:background="@color/colorWhite"
+        android:weightSum="10"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="@dimen/dimen0"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_close_blue_24dp"
+            android:id="@+id/hide_filter"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="@dimen/dimen0"
+            android:layout_height="match_parent"
+            android:text="FILTER"
+            android:layout_weight="3"
+            android:textSize="@dimen/font24"
+            android:paddingHorizontal="@dimen/dimen8"
+            android:textStyle="bold"
+            android:fontFamily="@font/font_utama"
+            android:gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status"
+        android:layout_margin="@dimen/dimen10"
+        android:textSize="@dimen/font18"
+        android:textStyle="bold"
+        android:fontFamily="@font/font_utama"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen10"
+        android:orientation="horizontal">
+
+        <RadioGroup android:id="@+id/toggleGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/all"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen38"
+                android:background="@drawable/custom_filter"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:padding="@dimen/dimen10"
+                android:checked="true"
+                android:text="ALL"
+                android:layout_marginHorizontal="@dimen/dimen3"/>
+            <RadioButton
+                android:id="@+id/ongoing"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen38"
+                android:background="@drawable/custom_filter"
+                android:button="@android:color/transparent"
+                android:text="Ongoing"
+                android:gravity="center"
+                android:padding="@dimen/dimen10"
+                android:layout_marginHorizontal="@dimen/dimen3"/>
+            <RadioButton
+                android:id="@+id/complete"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen38"
+                android:background="@drawable/custom_filter"
+                android:button="@android:color/transparent"
+                android:padding="@dimen/dimen10"
+                android:gravity="center"
+                android:text="Complete"
+                android:layout_marginHorizontal="@dimen/dimen3"/>
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Genres"
+        android:layout_margin="@dimen/dimen10"
+        android:textSize="@dimen/font18"
+        android:textStyle="bold"
+        android:fontFamily="@font/font_utama"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen10"
+        android:weightSum="4"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/action"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:padding="@dimen/dimen10"
+            android:text="Action"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+        <CheckBox
+            android:id="@+id/adventure"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:text="Adventure"
+            android:gravity="center"
+            android:padding="@dimen/dimen10"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+        <CheckBox
+            android:id="@+id/comedy"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:padding="@dimen/dimen10"
+            android:gravity="center"
+            android:text="Comedy"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+
+        <CheckBox
+            android:id="@+id/drama"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:padding="@dimen/dimen10"
+            android:gravity="center"
+            android:text="Drama"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen6"
+        android:layout_marginHorizontal="@dimen/dimen10"
+        android:weightSum="4"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/ecchi"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:padding="@dimen/dimen10"
+            android:text="Ecchi"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+        <CheckBox
+            android:id="@+id/fantasy"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:text="Fantasy"
+            android:gravity="center"
+            android:padding="@dimen/dimen10"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+        <CheckBox
+            android:id="@+id/harem"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:padding="@dimen/dimen10"
+            android:gravity="center"
+            android:text="Harem"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+
+        <CheckBox
+            android:id="@+id/isekai"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:padding="@dimen/dimen10"
+            android:gravity="center"
+            android:text="Isekai"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen6"
+        android:layout_marginHorizontal="@dimen/dimen10"
+        android:weightSum="4"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/josei"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:padding="@dimen/dimen10"
+            android:text="Josei"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+        <CheckBox
+            android:id="@+id/magic"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:text="Magic"
+            android:gravity="center"
+            android:padding="@dimen/dimen10"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+        <CheckBox
+            android:id="@+id/material_arts"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:padding="@dimen/dimen10"
+            android:gravity="center"
+            android:text="Material Arts"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+
+        <CheckBox
+            android:id="@+id/mecha"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:padding="@dimen/dimen10"
+            android:gravity="center"
+            android:text="Mecha"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen6"
+        android:layout_marginHorizontal="@dimen/dimen10"
+        android:weightSum="4"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/mystery"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:padding="@dimen/dimen10"
+            android:text="Mystery"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+        <CheckBox
+            android:id="@+id/psychologi"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:text="Psychologi"
+            android:gravity="center"
+            android:padding="@dimen/dimen10"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+        <CheckBox
+            android:id="@+id/romance"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:padding="@dimen/dimen10"
+            android:gravity="center"
+            android:text="Romance"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+
+        <CheckBox
+            android:id="@+id/school"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:padding="@dimen/dimen10"
+            android:gravity="center"
+            android:text="School"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen6"
+        android:layout_marginHorizontal="@dimen/dimen10"
+        android:weightSum="4"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/sci-fi"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:padding="@dimen/dimen10"
+            android:text="Sci-Fi"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+        <CheckBox
+            android:id="@+id/seinen"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:text="Seinen"
+            android:gravity="center"
+            android:padding="@dimen/dimen10"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+        <CheckBox
+            android:id="@+id/Shoujo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:padding="@dimen/dimen10"
+            android:gravity="center"
+            android:text="Shoujo"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+
+        <CheckBox
+            android:id="@+id/shounen"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen38"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:padding="@dimen/dimen10"
+            android:gravity="center"
+            android:text="Shounen"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen6"
+        android:layout_marginHorizontal="@dimen/dimen10"
+        android:layout_marginBottom="@dimen/dimen12"
+        android:paddingBottom="@dimen/dimen5"
+        android:weightSum="4"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/slice_of_life"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen39"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="Slice of Life"
+            android:padding="@dimen/dimen3"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+        <CheckBox
+            android:id="@+id/sport"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen39"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:text="Sport"
+            android:gravity="center"
+            android:padding="@dimen/dimen10"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+        <CheckBox
+            android:id="@+id/supranatural"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen39"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:padding="@dimen/dimen3"
+            android:gravity="center"
+            android:text="Supranatural"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+
+        <CheckBox
+            android:id="@+id/tragedy"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dimen39"
+            android:background="@drawable/custom_filter"
+            android:button="@android:color/transparent"
+            android:padding="@dimen/dimen10"
+            android:gravity="center"
+            android:text="Tragedy"
+            android:layout_marginHorizontal="@dimen/dimen3"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen12"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/filter_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_utama"
+            android:text="Filter"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

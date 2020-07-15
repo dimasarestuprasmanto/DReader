@@ -47,11 +47,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import ss.com.bannerslider.Slider;
-
-import static com.dimasarp.dreader.Common.Common.comicHashSet;
-import static com.dimasarp.dreader.Common.Common.comicList;
-import static com.dimasarp.dreader.Common.Common.comicSelected;
 
 
 /**
@@ -84,89 +79,20 @@ public class MangaFragment extends Fragment {
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary),
                 getResources().getColor(R.color.colorPrimaryDark));
 
-        recycler_comic = (RecyclerView) view.findViewById(R.id.recycler_comic_list);
+        recycler_comic = view.findViewById(R.id.recycler_comic_list);
         recycler_comic.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recycler_comic.setLayoutManager(mLayoutManager);
 
         txt_comic = (TextView) view.findViewById(R.id.txt_comic);
-        search = (EditText) view.findViewById(R.id.search);
-        search.setVisibility(View.INVISIBLE);
 
-        btn_search = (ImageView) view.findViewById(R.id.btn_search);
-        logo = (ImageView) view.findViewById(R.id.icon);
-        logo_name = (TextView) view.findViewById(R.id.logo_name);
 
-        hide = (ImageView) view.findViewById(R.id.hide);
 
-        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 fetchSearchComic("");
-                logo_name.setVisibility(View.VISIBLE);
-                logo.setVisibility(View.VISIBLE);
-                search.setVisibility(View.INVISIBLE);
-                hide.setVisibility(View.INVISIBLE);
-                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-                search.setText("");
-            }
-        });
-
-        btn_search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                search.setVisibility(View.VISIBLE);
-                hide.setVisibility(View.VISIBLE);
-                logo.setVisibility(View.INVISIBLE);
-                logo_name.setVisibility(View.INVISIBLE);
-                search.requestFocus();
-                imm.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT);
-            }
-        });
-
-        search.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                fetchSearchComic(search.getText().toString().toLowerCase());
-                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-                return false;
-            }
-        });
-
-        text = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                fetchSearchComic(search.getText().toString().toLowerCase());
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        };
-
-        search.addTextChangedListener(text);
-
-        hide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logo_name.setVisibility(View.VISIBLE);
-                logo.setVisibility(View.VISIBLE);
-                search.setVisibility(View.INVISIBLE);
-                hide.setVisibility(View.INVISIBLE);
-                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-                search.setText("");
-                fetchSearchComic(search.getText().toString().toLowerCase());
-
             }
         });
 
@@ -176,17 +102,18 @@ public class MangaFragment extends Fragment {
 
 
 
+
         return view;
 
     }
 
-    private void fetchfilterComic(String query1) {
+    private void fetchfilterComic(String query1,String query) {
         String[] tag = query1.split(" ");
         List<Comic> comic_search = new ArrayList<>();
         i=0;
         for (Comic comic : Common.comicList) {
                 for (String text : tag) {
-                        if (comic.Category.toLowerCase().contains(text)) {
+                        if (comic.Category.toLowerCase().contains(text) & comic.Status.contains(query)) {
                             i++;
                             if (tag.length <= i){
                                 comic_search.add(comic);
@@ -201,7 +128,7 @@ public class MangaFragment extends Fragment {
         txt_comic.setText(new StringBuilder("MANGA (")
                 .append(i)
                 .append(")"));
-        recycler_comic.setAdapter(new MyComicListAdapter(getActivity().getBaseContext(),comic_search));
+        recycler_comic.setAdapter(new MyComicListAdapter(getActivity().getBaseContext(),comic_search,getActivity()));
     }
 
     private void fetchSearchComic(String query) {
@@ -217,7 +144,7 @@ public class MangaFragment extends Fragment {
         swipeRefreshLayout.setRefreshing(false);
 
 
-        recycler_comic.setAdapter(new MyComicListAdapter(getActivity().getBaseContext(),comic_search));
+        recycler_comic.setAdapter(new MyComicListAdapter(getActivity().getBaseContext(),comic_search,getActivity()));
         txt_comic.setText(new StringBuilder("MANGA (")
                 .append(comic_search.size())
                 .append(")"));

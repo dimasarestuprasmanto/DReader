@@ -7,22 +7,61 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
+   <androidx.coordinatorlayout.widget.CoordinatorLayout
+       android:id="@+id/topnav"
+   android:layout_width="match_parent"
+   android:layout_height="?attr/actionBarSize">
+
+   <com.google.android.material.appbar.AppBarLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+      <com.google.android.material.appbar.MaterialToolbar
+          android:background="@color/backgorund"
+          android:id="@+id/topAppBar"
+          android:layout_width="match_parent"
+          android:layout_height="?attr/actionBarSize"
+          app:titleTextColor="#3fa3d8"
+          app:menu="@menu/nav_top_home"
+          style="@style/Widget.MaterialComponents.Toolbar.Primary">
+
+         <ImageView
+             android:id="@+id/icon"
+             android:padding="@dimen/dimen8"
+             android:layout_width="?attr/actionBarSize"
+             android:layout_height="?attr/actionBarSize"
+             android:layout_marginRight="@dimen/dimen3"
+             android:src="@drawable/icon_dreader"/>
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:fontFamily="@font/unicorn"
+             android:textSize="@dimen/font28"
+            android:text="D'Reader"/>
+      </com.google.android.material.appbar.MaterialToolbar>
+
+   </com.google.android.material.appbar.AppBarLayout>
+   </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
    <FrameLayout
        android:id="@+id/fragment_container"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:layout_above="@+id/bottom_nav"
-       android:layout_alignParentTop="true"/>
+       android:background="#edf1f5"
+       android:layout_below="@+id/topnav" />
 
 
 <com.ismaeldivita.chipnavigation.ChipNavigationBar
     android:id="@+id/bottom_nav"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dimen64"
+    android:layout_height="?attr/actionBarSize"
     android:elevation="@dimen/dimen3"
     app:cnb_textAppearance="@style/navbar"
     android:layout_alignParentBottom="true"
-    android:background="@drawable/custom_navbar"
+    android:background="@color/backgorund"
     app:cnb_menuResource="@menu/nav_items"/>
 
 </RelativeLayout>

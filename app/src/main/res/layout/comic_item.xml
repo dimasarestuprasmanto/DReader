@@ -30,7 +30,7 @@
                 android:textStyle="bold"
                 android:layout_gravity="bottom"
                 android:textSize="@dimen/font12"
-                android:background="#CC00008b"
+                android:background="#CC2b2d42"
                 android:padding="@dimen/dimen8"
                 android:fontFamily="@font/font_utama"
                 android:text="COMIC"

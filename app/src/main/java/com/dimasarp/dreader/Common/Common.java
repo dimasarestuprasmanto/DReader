@@ -1,5 +1,6 @@
 package com.dimasarp.dreader.Common;
 
+import com.dimasarp.dreader.Model.Category;
 import com.dimasarp.dreader.Model.Chapter;
 import com.dimasarp.dreader.Model.Comic;
 
@@ -9,8 +10,8 @@ import java.util.List;
 
 public class Common {
     public static List<Comic> comicList = new ArrayList<>();
-    public static HashSet<Comic> comicHashSet = new HashSet<>();
     public static Comic comicSelected;
+    public static String categorySelected;
     public static List<Chapter> chapterList;
     public static Chapter chapterSelected;
     public static int chapterIndex=-1;

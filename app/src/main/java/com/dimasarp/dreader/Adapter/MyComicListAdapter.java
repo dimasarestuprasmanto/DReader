@@ -1,5 +1,6 @@
 package com.dimasarp.dreader.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -24,11 +25,13 @@ public class MyComicListAdapter extends RecyclerView.Adapter<MyComicListAdapter.
     Context context;
     List<Comic> comicList;
     LayoutInflater inflater;
+    Activity mActivity;
 
-    public MyComicListAdapter(Context context, List<Comic> comicList) {
+    public MyComicListAdapter(Context context, List<Comic> comicList,Activity mActivity) {
         this.context = context;
         this.comicList = comicList;
         inflater = LayoutInflater.from(context);
+        this.mActivity=mActivity;
     }
 
     @NonNull
@@ -42,17 +45,13 @@ public class MyComicListAdapter extends RecyclerView.Adapter<MyComicListAdapter.
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Picasso.get().load(comicList.get(position).Image).into(holder.comic_image);
         holder.comic_name.setText(comicList.get(position).Name);
-        holder.genre.setText(new StringBuilder("Genres : ").append(comicList.get(position).Category)
+        holder.genre.setText(new StringBuilder("Genres : ").append(comicList.get(position).Category.replace(" ",", ").replace("_"," "))
                 .append(""));
         holder.released.setText(new StringBuilder("Released : ").append(comicList.get(position).Released)
                 .append(""));
         holder.totchap.setText(new StringBuilder("Total Chapter : ").append(comicList.get(position).Chapters.size())
                 .append(""));
-        if (comicList.get(position).Category == "1"){
-            holder.status.setText("Status : On-going");
-        }else {
-            holder.status.setText("Status : Compleate");
-        }
+        holder.status.setText(new StringBuilder("Status : ").append(comicList.get(position).Status));
 
         //event
         holder.setRecyclerItemClickListener(new IRecyclerItemClickListener() {
@@ -60,6 +59,7 @@ public class MyComicListAdapter extends RecyclerView.Adapter<MyComicListAdapter.
             public void onClick(View view, int position) {
                 Common.comicSelected = comicList.get(position);
                 view.getContext().startActivity(new Intent(context, ChapterActivity.class));
+                mActivity.overridePendingTransition( R.anim.buttom_up, R.anim.nothing );
             }
         });
     }

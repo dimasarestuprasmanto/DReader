@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimary">#40ace3</color>
+    <color name="colorPrimaryDark">#2b2d42</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorTransparantWhite">#cccccc</color>
     <color name="colorWhite">#ffffff</color>
@@ -9,5 +9,6 @@
     <color name="ColorBlack">#000000</color>
     <color name="white_nav">#FFF</color>
     <color name="rounded">#141932</color>
-    <color name="blue">#5B37B7</color>
+    <color name="blue">#40ace3</color>
+    <color name="backgorund">#2b2d42</color>
 </resources>

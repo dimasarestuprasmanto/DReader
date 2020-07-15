@@ -12,16 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="192dp"
         android:background="@android:color/transparent"
-
         app:elevation="@dimen/dimen0"
         android:elevation="@dimen/dimen0">
         <net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:maxLines="3"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="@color/white_nav">
+            app:contentScrim="@color/backgorund">
             <ImageView
                 android:id="@+id/banner"
                 android:alpha="0.5"
@@ -43,7 +41,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:id="@+id/chapter_back"
-        android:background="@drawable/ic_keyboard_arrow_left_blue_24dp"
+        android:background="@drawable/ic_keyboard_arrow_down_white_24dp"
         android:layout_width="@dimen/dimen50"
         android:layout_height="@dimen/dimen50"/>
 
@@ -55,69 +53,90 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
 
+<LinearLayout
+    android:id="@+id/detail_manga"
+    android:layout_alignParentTop="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen12"
+    android:minHeight="@dimen/dimen150"
+    android:orientation="horizontal"
+    android:weightSum="10">
+    <LinearLayout
+        android:layout_width="@dimen/dimen0"
+        android:layout_height="match_parent"
+        android:layout_weight="3">
+        <ImageView
+            android:id="@+id/image"
+            android:transitionName="imagemanga"
+            android:layout_width="match_parent"
+            android:scaleType="fitXY"
+            android:layout_alignParentStart="true"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="@dimen/dimen0"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="7">
+        <TextView
+            android:id="@+id/judul"
+            android:fontFamily="@font/font_utama"
+            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@+id/image"
+            android:text="Judul"
+            android:textSize="@dimen/font24" />
+        <TextView
+            android:id="@+id/status"
+            android:layout_below="@id/judul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@+id/image"
+            android:text="Status"
+            android:textSize="@dimen/font16" />
+        <TextView
+            android:id="@+id/released"
+            android:layout_below="@id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@+id/image"
+            android:text="Realease"
+            android:textSize="@dimen/font16" />
+        <TextView
+            android:id="@+id/total_chapter"
+            android:layout_below="@id/released"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@+id/image"
+            android:text="Total Chapter"
+            android:textSize="@dimen/font16" />
+    </LinearLayout>
 
-    <ImageView
-        android:layout_marginLeft="@dimen/dimen16"
-        android:id="@+id/image"
-        android:layout_alignParentTop="true"
-        android:transitionName="imagemanga"
-        android:layout_width="@dimen/dimen90"
-        android:layout_alignParentStart="true"
-        android:layout_height="@dimen/dimen128"
-        android:paddingVertical="@dimen/dimen12" />
 
-    <TextView
-        android:id="@+id/judul"
-        android:fontFamily="@font/font_utama"
-        android:layout_alignParentTop="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/image"
-        android:text="Judul"
-        android:textSize="@dimen/font24" />
-    <TextView
-        android:id="@+id/genre"
-        android:layout_below="@id/judul"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/image"
-        android:text="Genres"
-        android:textSize="@dimen/font16" />
-    <TextView
-        android:id="@+id/status"
-        android:layout_below="@id/genre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/image"
-        android:text="Status"
-        android:textSize="@dimen/font16" />
-    <TextView
-        android:id="@+id/released"
-        android:layout_below="@id/status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/image"
-        android:text="Realease"
-        android:textSize="@dimen/font16" />
-    <TextView
-        android:id="@+id/total_chapter"
-        android:layout_below="@id/released"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/image"
-        android:text="Author"
-        android:textSize="@dimen/font16" />
+
+
+</LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="@dimen/dimen15"
+            android:layout_below="@+id/detail_manga"
+            android:background="@android:color/transparent"
+            android:layout_marginHorizontal="@dimen/dimen2"
+            android:id="@+id/recycler_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <androidx.cardview.widget.CardView
             app:cardCornerRadius="@dimen/dimen9"
             android:layout_margin="@dimen/dimen12"
             android:id="@+id/header"
-            android:layout_below="@id/total_chapter"
+            android:layout_below="@id/recycler_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout

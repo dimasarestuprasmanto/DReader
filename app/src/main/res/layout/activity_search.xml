@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#edf1f5"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".SearchActivity">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/topnav"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:background="@color/backgorund"
+                android:id="@+id/topAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:titleTextColor="#3fa3d8"
+                app:menu="@menu/nav_top_search"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary">
+
+                <ImageView
+                    android:id="@+id/icon"
+                    android:padding="@dimen/dimen8"
+                    android:layout_width="?attr/actionBarSize"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginRight="@dimen/dimen3"
+                    android:src="@drawable/icon_dreader"/>
+
+                <EditText
+                    android:id="@+id/search_manga"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white_nav"
+                    android:fontFamily="@font/unicorn"
+                    android:textSize="@dimen/font28"
+                    android:hint="Ketik Judul Manga"/>
+            </com.google.android.material.appbar.MaterialToolbar>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <Button
+        android:id="@+id/filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_filter_white"
+        android:fontFamily="@font/font_utama"
+        android:text="filter"
+        android:layout_gravity="end"
+        android:layout_marginRight="@dimen/dimen10"/>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:id="@+id/swipe_to_refresh_manga"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_comic_list"
+            android:padding="@dimen/dimen8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</LinearLayout>

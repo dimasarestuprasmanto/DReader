@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_margin="@dimen/dimen2"
+    android:background="@android:color/transparent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_category">
+            <TextView
+                android:id="@+id/listcategory"
+                android:textStyle="bold"
+                android:paddingVertical="@dimen/dimen8"
+                android:paddingHorizontal="@dimen/dimen4"
+                android:textAlignment="center"
+                android:fontFamily="@font/unicorn"
+                android:textColor="@color/backgorund"
+                android:text="Category"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

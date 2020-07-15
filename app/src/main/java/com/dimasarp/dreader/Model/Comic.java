@@ -9,7 +9,7 @@ public class Comic {
     public String Sinopsis;
     public String Category;
     public int Released;
-    public int Status;
+    public String Status;
     public String Badge;
     public List<Chapter> Chapters;
     public Comic() {

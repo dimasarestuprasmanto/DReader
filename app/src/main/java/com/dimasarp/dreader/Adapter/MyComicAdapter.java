@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dimasarp.dreader.ChapterActivity;
@@ -25,11 +26,13 @@ public class MyComicAdapter extends RecyclerView.Adapter<MyComicAdapter.MyViewHo
     Context context;
     List<Comic> comicList;
     LayoutInflater inflater;
+    Activity mActivity;
 
-    public MyComicAdapter(Context context, List<Comic> comicList) {
+    public MyComicAdapter(Context context, List<Comic> comicList,Activity mActivity) {
         this.context = context;
         this.comicList = comicList;
         inflater = LayoutInflater.from(context);
+        this.mActivity=mActivity;
     }
 
     @NonNull
@@ -50,6 +53,7 @@ public class MyComicAdapter extends RecyclerView.Adapter<MyComicAdapter.MyViewHo
             public void onClick(View view, int position) {
                 Common.comicSelected = comicList.get(position);
                 view.getContext().startActivity(new Intent(context, ChapterActivity.class));
+                mActivity.overridePendingTransition( R.anim.buttom_up, R.anim.nothing );
             }
         });
     }
