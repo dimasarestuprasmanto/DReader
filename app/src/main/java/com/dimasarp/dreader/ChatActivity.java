@@ -1,6 +1,5 @@
 package com.dimasarp.dreader;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -18,7 +17,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ChatActivity extends AppCompatActivity {
     ProgressBar bar;

@@ -27,8 +27,6 @@ import com.dimasarp.dreader.Adapter.MyComicListAdapter;
 import com.dimasarp.dreader.Common.Common;
 import com.dimasarp.dreader.Model.Comic;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +34,7 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity implements BottomFilter.BottomSheetListener {
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recycler_comic;
-    TextView txt_comic,logo_name;
     EditText search;
-    ImageView btn_search,logo,hide;
     TextWatcher text = null;
     Integer i;
     @Override
@@ -68,7 +64,7 @@ public class SearchActivity extends AppCompatActivity implements BottomFilter.Bo
             }
         });
 
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_to_refresh_manga);
+        swipeRefreshLayout = findViewById(R.id.swipe_to_refresh_manga);
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary),
                 getResources().getColor(R.color.colorPrimaryDark));
 
@@ -78,7 +74,7 @@ public class SearchActivity extends AppCompatActivity implements BottomFilter.Bo
         recycler_comic.setLayoutManager(mLayoutManager);
 
 
-        search = (EditText) topappbar.findViewById(R.id.search_manga);
+        search = topappbar.findViewById(R.id.search_manga);
 
         text = new TextWatcher() {
             @Override

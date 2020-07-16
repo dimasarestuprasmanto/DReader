@@ -14,4 +14,11 @@
         android:title="Manga"
         app:cnb_iconColor="@color/blue"
         app:cnb_textColor="@color/white_nav" />
+
+    <item
+        android:id="@+id/bookmark"
+        android:icon="@drawable/ic_collections_bookmark_blue_24dp"
+        android:title="Bookmarks"
+        app:cnb_iconColor="@color/blue"
+        app:cnb_textColor="@color/white_nav" />
 </menu>

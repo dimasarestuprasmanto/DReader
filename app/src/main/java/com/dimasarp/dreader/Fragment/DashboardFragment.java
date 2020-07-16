@@ -1,11 +1,13 @@
-package com.dimasarp.dreader;
+package com.dimasarp.dreader.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,10 +25,13 @@ import android.widget.Toast;
 
 import com.dimasarp.dreader.Adapter.MyComicAdapter;
 import com.dimasarp.dreader.Adapter.MySliderAdapter;
+import com.dimasarp.dreader.ChapterActivity;
 import com.dimasarp.dreader.Common.Common;
+import com.dimasarp.dreader.HistoryActivity;
 import com.dimasarp.dreader.Interface.IBannerLoadDone;
 import com.dimasarp.dreader.Interface.IComicLoadDone;
 import com.dimasarp.dreader.Model.Comic;
+import com.dimasarp.dreader.R;
 import com.dimasarp.dreader.Service.PicassoLoadingService;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,12 +53,9 @@ import ss.com.bannerslider.Slider;
 public class DashboardFragment extends Fragment implements IBannerLoadDone,IComicLoadDone {
     Slider slider;
     SwipeRefreshLayout swipeRefreshLayout;
-    RecyclerView recycler_comic,recycler_comic1,recycler_comic2;
-    TextView txt_comic,logo_name;
-    EditText search;
-    ImageView btn_search,logo,hide;
-    TextWatcher text = null;
-    boolean koneksi,alreadyExecuted;;
+    RecyclerView recycler_comic,recycler_comic1;
+    CardView history;
+    boolean koneksi;
     //database
     DatabaseReference banners,comics;
 
@@ -87,27 +89,24 @@ public class DashboardFragment extends Fragment implements IBannerLoadDone,IComi
         comicListener = this;
         koneksi = false;
 
-        slider = (Slider) view.findViewById(R.id.slider);
+        slider = view.findViewById(R.id.slider);
         Slider.init(new PicassoLoadingService());
 
-        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_to_refresh);
+        swipeRefreshLayout = view.findViewById(R.id.swipe_to_refresh);
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary),
                 getResources().getColor(R.color.colorPrimaryDark));
         Connected();
 
-        recycler_comic = (RecyclerView) view.findViewById(R.id.recycler_comic);
-        recycler_comic1 = (RecyclerView) view.findViewById(R.id.recycler_comic1);
-        recycler_comic2 = (RecyclerView) view.findViewById(R.id.recycler_comic2);
+        recycler_comic = view.findViewById(R.id.recycler_comic);
+        recycler_comic1 = view.findViewById(R.id.recycler_comic1);
+
         recycler_comic.setHasFixedSize(true);
         recycler_comic1.setHasFixedSize(true);
-        recycler_comic2.setHasFixedSize(true);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(),1, GridLayoutManager.HORIZONTAL, false);
         RecyclerView.LayoutManager mLayoutManager1 = new GridLayoutManager(getContext(),1, GridLayoutManager.HORIZONTAL, false);
-        RecyclerView.LayoutManager mLayoutManager2 = new GridLayoutManager(getContext(),1, GridLayoutManager.HORIZONTAL, false);
         recycler_comic.setLayoutManager(mLayoutManager);
         recycler_comic1.setLayoutManager(mLayoutManager1);
-        recycler_comic2.setLayoutManager(mLayoutManager2);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -132,6 +131,14 @@ public class DashboardFragment extends Fragment implements IBannerLoadDone,IComi
 
         }else {
         }
+
+        history = view.findViewById(R.id.history);
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), HistoryActivity.class));
+            }
+        });
 
         return view;
 
@@ -205,7 +212,6 @@ public class DashboardFragment extends Fragment implements IBannerLoadDone,IComi
         Common.comicList = comicList;
 
         fetchComic();
-        fetchComiccategory();
         if (!swipeRefreshLayout.isRefreshing())
             mView.dismiss();
         swipeRefreshLayout.setRefreshing(false);
@@ -226,14 +232,6 @@ public class DashboardFragment extends Fragment implements IBannerLoadDone,IComi
             recycler_comic1.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comicrek,getActivity()));
 
         }
-    }
-    private void fetchComiccategory(){
-        List<Comic> comicfav = new ArrayList<>();
-        for (Comic comic:Common.comicList){
-            if (comic.Name.contains(""))
-                comicfav.add(comic);
-        }
-        recycler_comic2.setAdapter(new MyComicAdapter(getActivity().getBaseContext(),comicfav,getActivity()));
     }
 
 }

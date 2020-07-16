@@ -36,6 +36,18 @@
         </net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ToggleButton
+        android:layout_alignParentEnd="true"
+        android:id="@+id/togglebookmark"
+        android:layout_width="@dimen/dimen40"
+        android:layout_height="@dimen/dimen36"
+        android:textOff=""
+        android:textOn=""
+        android:background="@drawable/toggle_bookmark"
+        android:layout_margin="@dimen/dimen12"/>
 
     <View
         android:layout_alignParentStart="true"
@@ -44,6 +56,8 @@
         android:background="@drawable/ic_keyboard_arrow_down_white_24dp"
         android:layout_width="@dimen/dimen50"
         android:layout_height="@dimen/dimen50"/>
+
+    </RelativeLayout>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -70,9 +84,10 @@
             android:id="@+id/image"
             android:transitionName="imagemanga"
             android:layout_width="match_parent"
-            android:scaleType="fitXY"
+            android:scaleType="fitStart"
             android:layout_alignParentStart="true"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:maxHeight="@dimen/dimen200"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="@dimen/dimen0"
@@ -87,8 +102,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_toEndOf="@+id/image"
+            android:textStyle="bold"
             android:text="Judul"
-            android:textSize="@dimen/font24" />
+            android:textSize="@dimen/font22" />
         <TextView
             android:id="@+id/status"
             android:layout_below="@id/judul"
@@ -97,7 +113,7 @@
             android:layout_marginStart="12dp"
             android:layout_toEndOf="@+id/image"
             android:text="Status"
-            android:textSize="@dimen/font16" />
+            android:textSize="@dimen/font14" />
         <TextView
             android:id="@+id/released"
             android:layout_below="@id/status"
@@ -106,7 +122,7 @@
             android:layout_marginStart="12dp"
             android:layout_toEndOf="@+id/image"
             android:text="Realease"
-            android:textSize="@dimen/font16" />
+            android:textSize="@dimen/font14" />
         <TextView
             android:id="@+id/total_chapter"
             android:layout_below="@id/released"
@@ -115,17 +131,15 @@
             android:layout_marginStart="12dp"
             android:layout_toEndOf="@+id/image"
             android:text="Total Chapter"
-            android:textSize="@dimen/font16" />
+            android:textSize="@dimen/font14" />
+
     </LinearLayout>
-
-
-
 
 </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_marginTop="@dimen/dimen15"
-            android:layout_below="@+id/detail_manga"
+            android:layout_below="@id/detail_manga"
             android:background="@android:color/transparent"
             android:layout_marginHorizontal="@dimen/dimen2"
             android:id="@+id/recycler_category"

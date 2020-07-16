@@ -9,10 +9,13 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.dimasarp.dreader.Fragment.BookMarkFragment;
+import com.dimasarp.dreader.Fragment.DashboardFragment;
+import com.dimasarp.dreader.Fragment.MangaFragment;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
@@ -27,8 +30,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        final MaterialToolbar topappbar = (MaterialToolbar) findViewById(R.id.topAppBar);
-
+        final Toolbar topappbar = (Toolbar) findViewById(R.id.topAppBar);
 
         topappbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -84,6 +86,14 @@ public class HomeActivity extends AppCompatActivity {
                         transaction1.replace(R.id.fragment_container, fragment);
                         transaction1.addToBackStack(null);
                         transaction1.commit();
+                        break;
+                    case R.id.bookmark:
+                        fragment = new BookMarkFragment();
+                        FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+                        transaction2.setCustomAnimations( R.anim.enter_from_right,R.anim.exit_to_left);
+                        transaction2.replace(R.id.fragment_container, fragment);
+                        transaction2.addToBackStack(null);
+                        transaction2.commit();
                         break;
                 }
 

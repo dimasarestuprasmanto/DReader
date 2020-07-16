@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
-    tools:context=".DashboardFragment">
+    tools:context=".Fragment.DashboardFragment">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
@@ -30,10 +30,114 @@
             android:layout_alignParentTop="true"
             android:layout_height="wrap_content"
             app:slider_emptyView="@layout/layout_empty_view"
-            app:slider_loopSlides="true"></ss.com.bannerslider.Slider>
+            app:slider_loopSlides="true"/>
+
+    <LinearLayout
+        android:id="@+id/trio"
+        android:layout_below="@+id/slider"
+        android:layout_width="match_parent"
+        android:weightSum="3"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dimen12"
+        android:layout_marginHorizontal="@dimen/dimen20"
+        android:padding="@dimen/dimen12"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/history"
+            android:layout_width="@dimen/dimen0"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen3"
+            app:cardCornerRadius="@dimen/dimen12">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/custom_home">
+
+                <ImageView
+                    android:scaleType="fitXY"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen64"
+                    android:src="@drawable/zoro"/>
+
+                <TextView
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/font12"
+                    android:padding="@dimen/dimen8"
+                    android:fontFamily="@font/font_utama"
+                    android:layout_gravity="clip_horizontal|bottom"
+                    android:text="History"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </FrameLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/dimen0"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen3"
+            app:cardCornerRadius="@dimen/dimen12">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/custom_home">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen64"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/luffy" />
+
+                <TextView
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:textSize="@dimen/font12"
+                android:padding="@dimen/dimen8"
+                android:fontFamily="@font/font_utama"
+                android:text="COMIC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="clip_horizontal|bottom"/>
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/dimen0"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen3"
+            app:cardCornerRadius="@dimen/dimen12">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/custom_home">
+
+            <ImageView
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen64"
+                android:src="@drawable/sanji"/>
+
+            <TextView
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:textSize="@dimen/font12"
+                android:padding="@dimen/dimen8"
+                android:fontFamily="@font/font_utama"
+                android:text="About"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="clip_horizontal|bottom"/>
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
     <RelativeLayout
                 android:id="@+id/relative_rekomen"
-                android:layout_below="@+id/slider"
+                android:layout_below="@+id/trio"
                 android:layout_width="match_parent"
                 android:layout_margin="@dimen/dimen2"
                 android:padding="@dimen/dimen12"
@@ -44,17 +148,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/unicorn"
             android:textSize="@dimen/dimen16"
-            android:layout_below="@+id/img_rekomen"
+           android:layout_alignParentTop="true"
             android:text="TOP RANKING"
             android:layout_alignParentStart="true"/>
-
-                <ImageView
-                    android:layout_width="@dimen/dimen38"
-                    android:layout_height="@dimen/dimen38"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentStart="true"
-                    android:id="@+id/img_rekomen"
-                    android:src="@drawable/rekomendasi" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -106,38 +202,6 @@
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"/>
      </RelativeLayout>
-
-      <RelativeLayout
-                android:layout_below="@+id/relative_rekomen1"
-                android:layout_width="match_parent"
-                android:layout_margin="@dimen/dimen2"
-                android:padding="@dimen/dimen12"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/rekomen2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/unicorn"
-                    android:textSize="@dimen/dimen16"
-                    android:text="FAVORITE"
-                    android:layout_alignParentStart="true"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/recycler_comic2"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="6dp"
-                    android:src="@drawable/ic_action_view_more" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginTop="@dimen/dimen8"
-                    android:layout_below="@+id/rekomen2"
-                    android:id="@+id/recycler_comic2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false"/>
-      </RelativeLayout>
 </RelativeLayout>
     </ScrollView>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

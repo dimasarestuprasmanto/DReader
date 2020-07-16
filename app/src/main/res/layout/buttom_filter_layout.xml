@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="#edf1f5"
     android:paddingBottom="@dimen/dimen20">
@@ -47,17 +47,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen10"
+        android:layout_gravity="start"
         android:orientation="horizontal">
 
         <RadioGroup android:id="@+id/toggleGroup"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/dimen40"
             android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/all"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dimen38"
+                android:layout_height="match_parent"
                 android:background="@drawable/custom_filter"
                 android:button="@android:color/transparent"
                 android:gravity="center"
@@ -68,7 +69,7 @@
             <RadioButton
                 android:id="@+id/ongoing"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dimen38"
+                android:layout_height="match_parent"
                 android:background="@drawable/custom_filter"
                 android:button="@android:color/transparent"
                 android:text="Ongoing"
@@ -78,7 +79,7 @@
             <RadioButton
                 android:id="@+id/complete"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dimen38"
+                android:layout_height="match_parent"
                 android:background="@drawable/custom_filter"
                 android:button="@android:color/transparent"
                 android:padding="@dimen/dimen10"
@@ -98,10 +99,15 @@
         android:textSize="@dimen/font18"
         android:textStyle="bold"
         android:fontFamily="@font/font_utama"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimen264"
+        android:weightSum="6"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen0"
+        android:layout_weight="1"
         android:layout_marginHorizontal="@dimen/dimen10"
         android:weightSum="4"
         android:orientation="horizontal">
@@ -110,32 +116,29 @@
             android:id="@+id/action"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
             android:gravity="center"
-            android:padding="@dimen/dimen10"
             android:text="Action"
             android:layout_marginHorizontal="@dimen/dimen3"/>
         <CheckBox
             android:id="@+id/adventure"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
             android:text="Adventure"
             android:gravity="center"
-            android:padding="@dimen/dimen10"
             android:layout_marginHorizontal="@dimen/dimen3"/>
         <CheckBox
             android:id="@+id/comedy"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
-            android:padding="@dimen/dimen10"
             android:gravity="center"
             android:text="Comedy"
             android:layout_marginHorizontal="@dimen/dimen3"/>
@@ -144,10 +147,9 @@
             android:id="@+id/drama"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
-            android:padding="@dimen/dimen10"
             android:gravity="center"
             android:text="Drama"
             android:layout_marginHorizontal="@dimen/dimen3"/>
@@ -158,7 +160,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimen0"
+        android:layout_weight="1"
         android:layout_marginTop="@dimen/dimen6"
         android:layout_marginHorizontal="@dimen/dimen10"
         android:weightSum="4"
@@ -168,32 +171,32 @@
             android:id="@+id/ecchi"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
             android:gravity="center"
-            android:padding="@dimen/dimen10"
+            
             android:text="Ecchi"
             android:layout_marginHorizontal="@dimen/dimen3"/>
         <CheckBox
             android:id="@+id/fantasy"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
             android:text="Fantasy"
             android:gravity="center"
-            android:padding="@dimen/dimen10"
+             
             android:layout_marginHorizontal="@dimen/dimen3"/>
         <CheckBox
             android:id="@+id/harem"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
-            android:padding="@dimen/dimen10"
+            
             android:gravity="center"
             android:text="Harem"
             android:layout_marginHorizontal="@dimen/dimen3"/>
@@ -202,10 +205,10 @@
             android:id="@+id/isekai"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
-            android:padding="@dimen/dimen10"
+            
             android:gravity="center"
             android:text="Isekai"
             android:layout_marginHorizontal="@dimen/dimen3"/>
@@ -216,7 +219,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimen0"
+        android:layout_weight="1"
         android:layout_marginTop="@dimen/dimen6"
         android:layout_marginHorizontal="@dimen/dimen10"
         android:weightSum="4"
@@ -226,32 +230,32 @@
             android:id="@+id/josei"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
             android:gravity="center"
-            android:padding="@dimen/dimen10"
+            
             android:text="Josei"
             android:layout_marginHorizontal="@dimen/dimen3"/>
         <CheckBox
             android:id="@+id/magic"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
             android:text="Magic"
             android:gravity="center"
-            android:padding="@dimen/dimen10"
+            
             android:layout_marginHorizontal="@dimen/dimen3"/>
         <CheckBox
             android:id="@+id/material_arts"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
-            android:padding="@dimen/dimen10"
+            
             android:gravity="center"
             android:text="Material Arts"
             android:layout_marginHorizontal="@dimen/dimen3"/>
@@ -260,10 +264,10 @@
             android:id="@+id/mecha"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
-            android:padding="@dimen/dimen10"
+            
             android:gravity="center"
             android:text="Mecha"
             android:layout_marginHorizontal="@dimen/dimen3"/>
@@ -274,7 +278,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimen0"
+        android:layout_weight="1"
         android:layout_marginTop="@dimen/dimen6"
         android:layout_marginHorizontal="@dimen/dimen10"
         android:weightSum="4"
@@ -284,32 +289,32 @@
             android:id="@+id/mystery"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
             android:gravity="center"
-            android:padding="@dimen/dimen10"
+            
             android:text="Mystery"
             android:layout_marginHorizontal="@dimen/dimen3"/>
         <CheckBox
             android:id="@+id/psychologi"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
             android:text="Psychologi"
             android:gravity="center"
-            android:padding="@dimen/dimen10"
+            
             android:layout_marginHorizontal="@dimen/dimen3"/>
         <CheckBox
             android:id="@+id/romance"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
-            android:padding="@dimen/dimen10"
+            
             android:gravity="center"
             android:text="Romance"
             android:layout_marginHorizontal="@dimen/dimen3"/>
@@ -318,10 +323,10 @@
             android:id="@+id/school"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
-            android:padding="@dimen/dimen10"
+            
             android:gravity="center"
             android:text="School"
             android:layout_marginHorizontal="@dimen/dimen3"/>
@@ -332,7 +337,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimen0"
+        android:layout_weight="1"
         android:layout_marginTop="@dimen/dimen6"
         android:layout_marginHorizontal="@dimen/dimen10"
         android:weightSum="4"
@@ -342,32 +348,32 @@
             android:id="@+id/sci-fi"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
             android:gravity="center"
-            android:padding="@dimen/dimen10"
+            
             android:text="Sci-Fi"
             android:layout_marginHorizontal="@dimen/dimen3"/>
         <CheckBox
             android:id="@+id/seinen"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
             android:text="Seinen"
             android:gravity="center"
-            android:padding="@dimen/dimen10"
+            
             android:layout_marginHorizontal="@dimen/dimen3"/>
         <CheckBox
             android:id="@+id/Shoujo"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
-            android:padding="@dimen/dimen10"
+            
             android:gravity="center"
             android:text="Shoujo"
             android:layout_marginHorizontal="@dimen/dimen3"/>
@@ -376,10 +382,10 @@
             android:id="@+id/shounen"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen38"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
-            android:padding="@dimen/dimen10"
+            
             android:gravity="center"
             android:text="Shounen"
             android:layout_marginHorizontal="@dimen/dimen3"/>
@@ -390,11 +396,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimen0"
+        android:layout_weight="1"
         android:layout_marginTop="@dimen/dimen6"
         android:layout_marginHorizontal="@dimen/dimen10"
         android:layout_marginBottom="@dimen/dimen12"
-        android:paddingBottom="@dimen/dimen5"
         android:weightSum="4"
         android:orientation="horizontal">
 
@@ -402,32 +408,29 @@
             android:id="@+id/slice_of_life"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen39"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
             android:gravity="center"
             android:text="Slice of Life"
-            android:padding="@dimen/dimen3"
             android:layout_marginHorizontal="@dimen/dimen3"/>
         <CheckBox
             android:id="@+id/sport"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen39"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
             android:text="Sport"
             android:gravity="center"
-            android:padding="@dimen/dimen10"
             android:layout_marginHorizontal="@dimen/dimen3"/>
         <CheckBox
             android:id="@+id/supranatural"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen39"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
-            android:padding="@dimen/dimen3"
             android:gravity="center"
             android:text="Supranatural"
             android:layout_marginHorizontal="@dimen/dimen3"/>
@@ -436,10 +439,9 @@
             android:id="@+id/tragedy"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="@dimen/dimen39"
+            android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
-            android:padding="@dimen/dimen10"
             android:gravity="center"
             android:text="Tragedy"
             android:layout_marginHorizontal="@dimen/dimen3"/>
@@ -447,6 +449,9 @@
 
 
     </LinearLayout>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -59,7 +59,7 @@ public class MyComicListAdapter extends RecyclerView.Adapter<MyComicListAdapter.
             public void onClick(View view, int position) {
                 Common.comicSelected = comicList.get(position);
                 view.getContext().startActivity(new Intent(context, ChapterActivity.class));
-                mActivity.overridePendingTransition( R.anim.buttom_up, R.anim.nothing );
+                mActivity.overridePendingTransition(R.anim.buttom_up, R.anim.nothing);
             }
         });
     }

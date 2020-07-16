@@ -14,11 +14,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
-        <activity android:name=".ListMangaCategory"></activity>
+        <activity android:name=".HistoryActivity"></activity>
+        <activity android:name=".ListMangaCategory" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".ChatActivity" />
-        <activity android:name=".FirstActivity" />
-        <activity android:name=".FilterComic" />
         <activity android:name=".ViewComicActivity" />
         <activity android:name=".ChapterActivity" />
         <activity android:name=".HomeActivity" />

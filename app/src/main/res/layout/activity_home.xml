@@ -22,8 +22,7 @@
           android:layout_width="match_parent"
           android:layout_height="?attr/actionBarSize"
           app:titleTextColor="#3fa3d8"
-          app:menu="@menu/nav_top_home"
-          style="@style/Widget.MaterialComponents.Toolbar.Primary">
+          app:menu="@menu/nav_top_home">
 
          <ImageView
              android:id="@+id/icon"

@@ -1,4 +1,4 @@
-package com.dimasarp.dreader;
+package com.dimasarp.dreader.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -34,6 +34,7 @@ import com.dimasarp.dreader.Common.Common;
 import com.dimasarp.dreader.Interface.IBannerLoadDone;
 import com.dimasarp.dreader.Interface.IComicLoadDone;
 import com.dimasarp.dreader.Model.Comic;
+import com.dimasarp.dreader.R;
 import com.google.android.material.chip.Chip;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -55,13 +56,9 @@ import java.util.List;
 public class MangaFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recycler_comic;
-    TextView txt_comic,logo_name;
-    EditText search;
-    ImageView btn_search,logo,hide;
-    TextWatcher text = null;
-    Integer i;
+    TextView txt_comic;
 
-    CatLoadingView mView;
+
 
 
     public MangaFragment() {
@@ -107,29 +104,6 @@ public class MangaFragment extends Fragment {
 
     }
 
-    private void fetchfilterComic(String query1,String query) {
-        String[] tag = query1.split(" ");
-        List<Comic> comic_search = new ArrayList<>();
-        i=0;
-        for (Comic comic : Common.comicList) {
-                for (String text : tag) {
-                        if (comic.Category.toLowerCase().contains(text) & comic.Status.contains(query)) {
-                            i++;
-                            if (tag.length <= i){
-                                comic_search.add(comic);
-                                i=0;
-                            }
-
-                        }
-                        //category false
-                    }
-                i=0;
-                }
-        txt_comic.setText(new StringBuilder("MANGA (")
-                .append(i)
-                .append(")"));
-        recycler_comic.setAdapter(new MyComicListAdapter(getActivity().getBaseContext(),comic_search,getActivity()));
-    }
 
     private void fetchSearchComic(String query) {
 

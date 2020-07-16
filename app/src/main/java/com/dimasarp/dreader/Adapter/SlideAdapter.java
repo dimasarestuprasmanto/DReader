@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -27,21 +28,21 @@ public class SlideAdapter extends PagerAdapter  {
     //array
     public int[] slide_img = {
 
-            R.drawable.logo_dummy,
-            R.drawable.logo_dummy2,
-            R.drawable.logo_dummy3
+            R.drawable.wk1,
+            R.drawable.wk2,
+            R.drawable.wk3
     };
 
     public String[] slide_head = {
-            "Recently",
-            "Komik",
-            "Light Novel"
+            "Manga",
+            "Chat",
+            "Search & Filter"
     };
 
     public String[] slide_desc = {
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+                "Baca secara online ratusan manga",
+                "Chat bareng seluruh anime lovers lainnya untuk berbagi pengalaman membaca",
+                "Mudahnya mencari manga dengan nama dan genresnya"
     };
     @Override
     public int getCount() {
@@ -50,7 +51,7 @@ public class SlideAdapter extends PagerAdapter  {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
-        return view == (RelativeLayout) o;
+        return view == (LinearLayout) o;
     }
 
     @NonNull
@@ -75,6 +76,6 @@ public class SlideAdapter extends PagerAdapter  {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        container.removeView((RelativeLayout)object);
+        container.removeView((LinearLayout)object);
     }
 }

@@ -5,7 +5,7 @@
     android:background="#edf1f5"
     android:layout_height="match_parent"
     android:id="@+id/manga"
-    tools:context=".MangaFragment">
+    tools:context=".Fragment.MangaFragment">
 
    <LinearLayout
        android:layout_width="match_parent"

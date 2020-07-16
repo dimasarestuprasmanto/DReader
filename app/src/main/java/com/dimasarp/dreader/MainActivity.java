@@ -39,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-        mSlideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
-        mDotLayout = (LinearLayout) findViewById(R.id.dotslayout);
+        mSlideViewPager = findViewById(R.id.slideViewPager);
+        mDotLayout = findViewById(R.id.dotslayout);
 
-        mBtnNext = (Button) findViewById(R.id.btnNext);
-        mBtnPrev = (Button) findViewById(R.id.btnPrev);
+        mBtnNext = findViewById(R.id.btnNext);
+        mBtnPrev = findViewById(R.id.btnPrev);
 
         slideAdapter = new SlideAdapter(this);
         mSlideViewPager.setAdapter(slideAdapter);
