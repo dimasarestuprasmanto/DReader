@@ -78,8 +78,8 @@ public class MyComicAdapter extends RecyclerView.Adapter<MyComicAdapter.MyViewHo
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            comic_image = (ImageView)itemView.findViewById(R.id.image_comic);
-            comic_name = (TextView)itemView.findViewById(R.id.comic_name);
+            comic_image = itemView.findViewById(R.id.image_comic);
+            comic_name = itemView.findViewById(R.id.comic_name);
 
             itemView.setOnClickListener(this);
         }

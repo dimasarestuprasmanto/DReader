@@ -84,12 +84,12 @@ public class MyComicListAdapter extends RecyclerView.Adapter<MyComicListAdapter.
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            comic_image = (ImageView)itemView.findViewById(R.id.image_comic);
-            comic_name = (TextView)itemView.findViewById(R.id.comic_name);
-            genre = (TextView)itemView.findViewById(R.id.genre);
-            status = (TextView)itemView.findViewById(R.id.status);
-            released = (TextView)itemView.findViewById(R.id.released);
-            totchap = (TextView)itemView.findViewById(R.id.tot_chap);
+            comic_image = itemView.findViewById(R.id.image_comic);
+            comic_name = itemView.findViewById(R.id.comic_name);
+            genre = itemView.findViewById(R.id.genre);
+            status = itemView.findViewById(R.id.status);
+            released = itemView.findViewById(R.id.released);
+            totchap = itemView.findViewById(R.id.tot_chap);
 
 
             itemView.setOnClickListener(this);

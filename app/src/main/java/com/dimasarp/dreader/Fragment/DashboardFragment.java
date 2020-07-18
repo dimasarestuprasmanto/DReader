@@ -1,5 +1,6 @@
 package com.dimasarp.dreader.Fragment;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -14,18 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
-import android.text.TextWatcher;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dimasarp.dreader.Adapter.MyComicAdapter;
 import com.dimasarp.dreader.Adapter.MySliderAdapter;
-import com.dimasarp.dreader.ChapterActivity;
 import com.dimasarp.dreader.Common.Common;
 import com.dimasarp.dreader.HistoryActivity;
 import com.dimasarp.dreader.Interface.IBannerLoadDone;
@@ -54,7 +51,7 @@ public class DashboardFragment extends Fragment implements IBannerLoadDone,IComi
     Slider slider;
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recycler_comic,recycler_comic1;
-    CardView history;
+    CardView history,about;
     boolean koneksi;
     //database
     DatabaseReference banners,comics;
@@ -62,10 +59,9 @@ public class DashboardFragment extends Fragment implements IBannerLoadDone,IComi
     //Listener
     IBannerLoadDone bannerListener;
     IComicLoadDone comicListener;
-
     CatLoadingView mView;
-
-
+    View btnclose;
+    Dialog mDialog;
     public DashboardFragment() {
         // Required empty public constructor
     }
@@ -76,7 +72,7 @@ public class DashboardFragment extends Fragment implements IBannerLoadDone,IComi
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
-
+        mDialog = new Dialog(getActivity());
 
         //init database
         banners = FirebaseDatabase.getInstance().getReference("Banners");
@@ -93,8 +89,11 @@ public class DashboardFragment extends Fragment implements IBannerLoadDone,IComi
         Slider.init(new PicassoLoadingService());
 
         swipeRefreshLayout = view.findViewById(R.id.swipe_to_refresh);
-        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary),
-                getResources().getColor(R.color.colorPrimaryDark));
+        if (android.os.Build.VERSION.SDK_INT >= 23){
+            swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary),
+                    getResources().getColor(R.color.colorPrimaryDark));
+        }
+
         Connected();
 
         recycler_comic = view.findViewById(R.id.recycler_comic);
@@ -140,6 +139,21 @@ public class DashboardFragment extends Fragment implements IBannerLoadDone,IComi
             }
         });
 
+        about = view.findViewById(R.id.about);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            mDialog.setContentView(R.layout.item_about);
+            btnclose = mDialog.findViewById(R.id.close);
+                btnclose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mDialog.dismiss();
+                    }
+                });
+                mDialog.show();
+            }
+        });
         return view;
 
 

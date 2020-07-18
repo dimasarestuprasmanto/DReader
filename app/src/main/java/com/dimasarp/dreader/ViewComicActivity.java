@@ -24,14 +24,14 @@ public class ViewComicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_comic);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyler_manga);
+        recyclerView = findViewById(R.id.recyler_manga);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemViewCacheSize(20);
         recyclerView.setDrawingCacheEnabled(true);
         recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        txt_chapter_name = (TextView)findViewById(R.id.txt_chapter_name);
+        toolbar = findViewById(R.id.toolbar);
+        txt_chapter_name = findViewById(R.id.txt_chapter_name);
         next = findViewById(R.id.chapter_next);
         back = findViewById(R.id.chapter_back);
 

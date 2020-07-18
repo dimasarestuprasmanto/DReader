@@ -48,7 +48,7 @@ public class BottomFilter extends BottomSheetDialogFragment {
         school = v.findViewById(R.id.school);
         sci_fi = v.findViewById(R.id.sci_fi);
         seinen = v.findViewById(R.id.seinen);
-        shoujo = v.findViewById(R.id.seinen);
+        shoujo = v.findViewById(R.id.shoujo);
         shounen = v.findViewById(R.id.shounen);
         slice_of_life = v.findViewById(R.id.slice_of_life);
         sport = v.findViewById(R.id.sport);

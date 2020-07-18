@@ -15,7 +15,6 @@ import com.dimasarp.dreader.Interface.IRecyclerItemClickListener;
 import com.dimasarp.dreader.Model.Chapter;
 import com.dimasarp.dreader.R;
 import com.dimasarp.dreader.ViewComicActivity;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -66,7 +65,7 @@ public class MyChapterAdapter extends RecyclerView.Adapter<MyChapterAdapter.MyVi
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            txt_chapter_numb = (TextView)itemView.findViewById(R.id.txt_chapter_numb);
+            txt_chapter_numb = itemView.findViewById(R.id.txt_chapter_numb);
 
             itemView.setOnClickListener(this);
         }

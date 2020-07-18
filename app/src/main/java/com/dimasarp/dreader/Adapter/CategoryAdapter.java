@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dimasarp.dreader.ChapterActivity;
 import com.dimasarp.dreader.Common.Common;
 import com.dimasarp.dreader.Interface.IRecyclerItemClickListener;
 import com.dimasarp.dreader.ListMangaCategory;

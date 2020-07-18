@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dimasarp.dreader.R;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -36,7 +37,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        Picasso.get().load(imageLinks.get(position)).into((ImageView) holder.itemView.findViewById(R.id.manga));
+        Picasso.get().load(imageLinks.get(position)).error( R.drawable.ic_error)
+                .placeholder( R.drawable.progress_animation ).into((PhotoView) holder.itemView.findViewById(R.id.manga));
     }
 
     @Override

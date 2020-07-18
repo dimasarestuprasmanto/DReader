@@ -345,7 +345,7 @@
         android:orientation="horizontal">
 
         <CheckBox
-            android:id="@+id/sci-fi"
+            android:id="@+id/sci_fi"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
@@ -367,13 +367,12 @@
             
             android:layout_marginHorizontal="@dimen/dimen3"/>
         <CheckBox
-            android:id="@+id/Shoujo"
+            android:id="@+id/shoujo"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@drawable/custom_filter"
             android:button="@android:color/transparent"
-            
             android:gravity="center"
             android:text="Shoujo"
             android:layout_marginHorizontal="@dimen/dimen3"/>

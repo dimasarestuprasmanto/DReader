@@ -1,7 +1,6 @@
 package com.dimasarp.dreader;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,26 +9,16 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
-import android.widget.Toolbar;
 
 import com.dimasarp.dreader.Adapter.CategoryAdapter;
 import com.dimasarp.dreader.Adapter.MyChapterAdapter;
 import com.dimasarp.dreader.Common.Common;
-import com.dimasarp.dreader.Model.Comic;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
-import java.io.File;
-import java.util.List;
 
 import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 import static com.dimasarp.dreader.Common.Common.comicSelected;
@@ -40,7 +29,6 @@ public class ChapterActivity extends AppCompatActivity {
     TextView total_chapter, judul,status,released,expandable_text;
     LinearLayoutManager layoutManager,layoutManager1;
     ExpandableTextView showSinopsis;
-    net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout collapsing_container;
     CategoryAdapter myadapter;
 
     public static final String SHARED_PREFS = "sharedPrefs";
@@ -49,7 +37,6 @@ public class ChapterActivity extends AppCompatActivity {
     public static final String HISTORY = "";
     String comicbookmark,comichistory;
     ToggleButton test;
-    StringBuilder test1,test11;
 
     View back;
     @Override
@@ -58,14 +45,14 @@ public class ChapterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chapter);
 
         test = findViewById(R.id.togglebookmark);
-        released = (TextView)findViewById(R.id.released);
-        banner = (ImageView)findViewById(R.id.banner);
-        status = (TextView)findViewById(R.id.status);
-        imagecomic = (ImageView)findViewById(R.id.image) ;
-        judul = (TextView)findViewById(R.id.judul);
-        total_chapter = (TextView)findViewById(R.id.total_chapter);
-        back = (View)findViewById(R.id.chapter_back);
-        expandable_text = (TextView)findViewById(R.id.expandable_text);
+        released = findViewById(R.id.released);
+        banner = findViewById(R.id.banner);
+        status = findViewById(R.id.status);
+        imagecomic = findViewById(R.id.image) ;
+        judul = findViewById(R.id.judul);
+        total_chapter = findViewById(R.id.total_chapter);
+        back = findViewById(R.id.chapter_back);
+        expandable_text = findViewById(R.id.expandable_text);
 
 
 
@@ -73,9 +60,9 @@ public class ChapterActivity extends AppCompatActivity {
             expandable_text.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
         }
 
-        recycler_chapter = (RecyclerView)findViewById(R.id.recycler_chapter);
+        recycler_chapter = findViewById(R.id.recycler_chapter);
         recycler_chapter.setHasFixedSize(true);
-        recycler_category = (RecyclerView)findViewById(R.id.recycler_category);
+        recycler_category = findViewById(R.id.recycler_category);
         recycler_category.setHasFixedSize(true);
 
         layoutManager = new GridLayoutManager(this,4);
@@ -106,7 +93,7 @@ public class ChapterActivity extends AppCompatActivity {
         myadapter = new CategoryAdapter(categorylist,this);
         recycler_category.setAdapter(myadapter);
 
-        showSinopsis = (ExpandableTextView) findViewById(R.id.expand_text_view);
+        showSinopsis = findViewById(R.id.expand_text_view);
         showSinopsis.setText(new StringBuilder("").append(comicSelected.Sinopsis));
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);

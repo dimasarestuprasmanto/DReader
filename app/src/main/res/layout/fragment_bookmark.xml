@@ -5,13 +5,8 @@
     android:background="#edf1f5"
     android:layout_height="match_parent"
     android:id="@+id/manga"
+    android:orientation="vertical"
     tools:context=".Fragment.BookMarkFragment">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/colorWhite">
 
 
         <RelativeLayout
@@ -53,5 +48,3 @@
 
     </LinearLayout>
 
-
-</LinearLayout>

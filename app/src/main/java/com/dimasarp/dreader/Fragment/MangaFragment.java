@@ -1,51 +1,28 @@
 package com.dimasarp.dreader.Fragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
+
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.dimasarp.dreader.Adapter.MyComicAdapter;
+
+
 import com.dimasarp.dreader.Adapter.MyComicListAdapter;
 import com.dimasarp.dreader.Common.Common;
-import com.dimasarp.dreader.Interface.IBannerLoadDone;
-import com.dimasarp.dreader.Interface.IComicLoadDone;
 import com.dimasarp.dreader.Model.Comic;
 import com.dimasarp.dreader.R;
-import com.google.android.material.chip.Chip;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.roger.catloadinglibrary.CatLoadingView;
 
-import java.lang.reflect.Array;
+
+
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 

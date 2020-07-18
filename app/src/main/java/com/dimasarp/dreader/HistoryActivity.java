@@ -7,18 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.dimasarp.dreader.Adapter.MyComicListAdapter;
 import com.dimasarp.dreader.Common.Common;
 import com.dimasarp.dreader.Model.Comic;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
-import static com.dimasarp.dreader.Common.Common.comicSelected;
 
 public class HistoryActivity extends AppCompatActivity {
     RecyclerView recycler_comic_history;

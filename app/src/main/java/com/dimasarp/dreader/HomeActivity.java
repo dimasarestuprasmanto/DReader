@@ -9,19 +9,16 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.dimasarp.dreader.Fragment.BookMarkFragment;
 import com.dimasarp.dreader.Fragment.DashboardFragment;
 import com.dimasarp.dreader.Fragment.MangaFragment;
-import com.google.android.material.appbar.MaterialToolbar;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private  static final String TAG = HomeActivity.class.getSimpleName();
     ChipNavigationBar botomNav;
     FragmentManager fragmentManager;
 
@@ -30,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        final Toolbar topappbar = (Toolbar) findViewById(R.id.topAppBar);
+        final Toolbar topappbar = findViewById(R.id.topAppBar);
 
         topappbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override

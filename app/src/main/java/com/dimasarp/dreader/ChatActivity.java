@@ -28,7 +28,7 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
 
 
-        MaterialToolbar topappbar = (MaterialToolbar) findViewById(R.id.topAppBar);
+        MaterialToolbar topappbar = findViewById(R.id.topAppBar);
         topappbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
