@@ -37,7 +37,6 @@
                     android:textSize="@dimen/font24"
                     android:gravity="center_horizontal"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/chapter_back"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 

@@ -71,7 +71,6 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.dasboard:
                         fragment = new DashboardFragment();
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right);
                         transaction.replace(R.id.fragment_container, fragment);
                         transaction.addToBackStack(null);
                         transaction.commit();
@@ -79,7 +78,6 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.manga:
                         fragment = new MangaFragment();
                         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-                        transaction1.setCustomAnimations( R.anim.enter_from_right,R.anim.exit_to_left,R.anim.enter_from_left, R.anim.exit_to_right);
                         transaction1.replace(R.id.fragment_container, fragment);
                         transaction1.addToBackStack(null);
                         transaction1.commit();
@@ -87,7 +85,6 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.bookmark:
                         fragment = new BookMarkFragment();
                         FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
-                        transaction2.setCustomAnimations( R.anim.enter_from_right,R.anim.exit_to_left);
                         transaction2.replace(R.id.fragment_container, fragment);
                         transaction2.addToBackStack(null);
                         transaction2.commit();
