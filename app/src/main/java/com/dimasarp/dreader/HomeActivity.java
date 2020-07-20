@@ -79,7 +79,7 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.manga:
                         fragment = new MangaFragment();
                         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-                        transaction1.setCustomAnimations( R.anim.enter_from_right,R.anim.exit_to_left);
+                        transaction1.setCustomAnimations( R.anim.enter_from_right,R.anim.exit_to_left,R.anim.enter_from_left, R.anim.exit_to_right);
                         transaction1.replace(R.id.fragment_container, fragment);
                         transaction1.addToBackStack(null);
                         transaction1.commit();
